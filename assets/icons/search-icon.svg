@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="6.3499999mm"
+   height="6.3500004mm"
+   viewBox="0 0 6.3499998 6.3500003"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:export-filename="bottom-bar.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"><inkscape:page
+       x="1.4059094e-06"
+       y="5.3658835e-07"
+       width="6.3499999"
+       height="6.3500004"
+       id="page7"
+       margin="0"
+       bleed="0" /></sodipodi:namedview><defs
+     id="defs1" /><g
+     id="g135"
+     inkscape:groupmode="layer"
+     inkscape:label="3"
+     transform="matrix(0.26458333,0,0,0.26458335,-438.8556,-39.158337)"><path
+       id="path189"
+       d="M 16.6,0 10.3,6.3 C 9.8,5.9 9.225,5.583333 8.575,5.349999 7.925,5.116667 7.233334,5 6.5,5 4.683333,5 3.145833,5.629167 1.8875,6.8875 0.629167,8.145833 0,9.683333 0,11.5 0,13.316667 0.629167,14.854167 1.8875,16.112499 3.145833,17.370832 4.683333,18 6.5,18 8.316667,18 9.854167,17.370832 11.1125,16.112499 12.370833,14.854167 13,13.316667 13,11.5 13,10.766666 12.883333,10.075 12.650001,9.425 12.416667,8.775 12.1,8.2 11.7,7.7 L 18,1.4 Z M 6.5,7 C 7.75,7 8.8125,7.4375 9.6875,8.3125 10.5625,9.1875 11,10.25 11,11.5 11,12.75 10.5625,13.8125 9.6875,14.6875 8.8125,15.5625 7.75,16 6.5,16 5.25,16 4.1875,15.5625 3.3125,14.6875 2.4375,13.8125 2,12.75 2,11.5 2,10.25 2.4375,9.1875 3.3125,8.3125 4.1875,7.4375 5.25,7 6.5,7 Z"
+       style="fill:#f47316;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       transform="matrix(1.3333333,0,0,-1.3333333,1658.6667,172)" /></g></svg>
