@@ -1,17 +1,31 @@
 @keyframes start_logo_appear {
     0%{
-        scale: 0;
+        width:45vw;
+        opacity: .0;
     }
     80%{
-        scale:1.1;
+        
     }
     100%{
-        scale: 1;
+        width:35vw;
+        opacity: 1;
     }
 }
 
 @keyframes loading-spin {
     100%{
         transform: rotate(360deg);
+    }
+}
+
+@keyframes fade-away {
+    from{
+        opacity: 1;
+        scale:1
+    }
+    to{
+        opacity: 0;
+        scale: 1.4;
+        display: none;
     }
 }
