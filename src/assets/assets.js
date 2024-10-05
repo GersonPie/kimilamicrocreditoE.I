@@ -8,6 +8,7 @@ import icon_graph from './icons/graph-icon.svg'
 import icon_meter from './icons/meter.svg'
 import money_img from './home-page-money.png'
 import icon_graph2 from './icons/graph-icon2.svg'
+import avatar from './avatar.png'
 
 
 
@@ -21,5 +22,6 @@ export const assets = {
     icon_graph,
     icon_bottom_bar,
     money_img,
-    icon_graph2
+    icon_graph2,
+    avatar
 }

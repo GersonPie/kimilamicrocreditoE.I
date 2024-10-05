@@ -3,14 +3,14 @@ import App, { AppContext } from '../App'
 import {NavBar} from '../componets/NavBar.jsx'
 import {Topbar} from '../componets/Topbar'
 import { assets } from '../assets/assets.js'
-import {RecentPosts} from '../componets/RecentPosts'
+import {RecentPosts} from '../componets/RecentPosts.jsx'
 const Home_Page = () => {
 
     const {go_to_page} = useContext(AppContext)
 
   return (
     <div className="main-container homepage">
-        <h1>Inicio</h1>
+        <h2>Inicio</h2>
 
         <div className="home-main-image-wrapper">
           <div className="image-info">
@@ -27,7 +27,7 @@ const Home_Page = () => {
           
         </div>
 
-
+      <br />
         <RecentPosts/>
     </div>
   )
