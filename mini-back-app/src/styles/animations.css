@@ -1,0 +1,17 @@
+@keyframes start_logo_appear {
+    0%{
+        scale: 0;
+    }
+    80%{
+        scale:1.1;
+    }
+    100%{
+        scale: 1;
+    }
+}
+
+@keyframes loading-spin {
+    100%{
+        transform: rotate(360deg);
+    }
+}
