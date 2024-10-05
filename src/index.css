@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: Poppins;
+}
+.startPage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  
+  & img{
+    width: clamp(35vw, 25px);
+    animation: start_logo_appear .5s;
+  }
+}
+.startPage-image-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.loading-effect{
+  border: 5px solid rgba(0,0,0,1);
+  border-left: 5px solid rgb(0,0,0,0);
+  border-radius: 50px;
+  padding: 10px;
+  animation: loading-spin 2s infinite linear;
+}
+.loading-text{
+  font-weight: 600;
+}
+.fadeaway{
+  animation: fade-away .2s linear;
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  background-color: white;
+  padding: 10px 0;
+}
+.navbar-each-icon-wrapper img{
+  width: 44px;
+}
+.topbar{
+  top: 0;
+  left: 0;
+  margin: 0;
+  display: flex;
+  padding: 10px;
+  position: fixed;
+  width: 100vw;
+  background-color: white;
+  
+  z-index: 5;
+}
+.topbar-wrapper{
+  display: flex;
+  font-weight: 600;
+  gap: 10px;
+  
+  & img{
+    width: 44px;
+    
+  }
+}
+.main-container{
+  margin: auto;
+  margin-top: 120px;
+  width: 95vw;
+  height: 100%;
+  
+}
+.home-main-image{
+  width: 100%;
+  
+}
+.image-info{
+  display: flex;
+  position: absolute;
+  padding: 15px;
+  color: white;
+  & p{
+    font-weight: 600;
+  };
+  & img{
+    width: 32px;
+    padding: 0 10px;
+  }
+}
+.home-main-image-wrapper{
+  width: fit-content;
+}
+.image-info-center-button{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0f2f4eff;
+  padding: 10px 15px;
+  border-radius: 10px;
+
+  & img{
+    width: 22px;
+    
+
+  }
+}

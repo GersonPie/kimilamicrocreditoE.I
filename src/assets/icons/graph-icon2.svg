@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="21.432007"
+   height="21.354645"
+   viewBox="0 0 21.432007 21.354645"
+   sodipodi:docname="Kimilamicrocredito app.pdf"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath146">
+      <path
+         d="M 0,0 H 430 V 927 H 0 Z"
+         id="path146" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath148">
+      <path
+         d="M 0,0 H 429.473 V 926.699 H 0 Z"
+         transform="matrix(1.3333333,0,0,1.3333333,592,0)"
+         id="path148" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:page
+       x="-4.2483698e-06"
+       y="-4.3479545e-06"
+       width="21.432007"
+       height="21.354645"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     id="g21"
+     inkscape:groupmode="layer"
+     inkscape:label="2"
+     transform="translate(-922.172,-413.38)">
+    <g
+       id="g147"
+       clip-path="url(#clipPath148)">
+      <path
+         d="m 259.684,326.051 v -7.008 h 4.019 v 7.008 z m -6.028,0 v -16.016 h 4.016 v 16.016 z m -6.027,0 v -11.012 h 4.016 v 11.012 z"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         transform="matrix(1.3333333,0,0,1.3333333,592,0)"
+         clip-path="url(#clipPath146)"
+         id="path147" />
+    </g>
+  </g>
+</svg>
