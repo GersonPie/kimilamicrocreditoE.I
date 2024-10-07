@@ -19,13 +19,12 @@
 }
 
 @keyframes fade-away {
-    from{
-        opacity: 1;
-        scale:1
+    0%{
+        opacity: 0.4;
     }
-    to{
+    
+    
+    100%{
         opacity: 0;
-        scale: 1.4;
-        display: none;
     }
 }

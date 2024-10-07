@@ -9,7 +9,9 @@ import icon_meter from './icons/meter.svg'
 import money_img from './home-page-money.png'
 import icon_graph2 from './icons/graph-icon2.svg'
 import avatar from './avatar.png'
-
+import az from './icons/az.svg'
+import wallet from './icons/wallet.svg'
+import dollar from './icons/dollar.svg'
 
 
 export const assets = {
@@ -23,5 +25,8 @@ export const assets = {
     icon_bottom_bar,
     money_img,
     icon_graph2,
-    avatar
+    avatar,
+    az,
+    dollar,
+    wallet
 }
