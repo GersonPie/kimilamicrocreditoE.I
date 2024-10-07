@@ -8,6 +8,7 @@ export const Topbar = () => {
             <img src={assets.logo_start}/>
             <p>KIMILA <br />MICROCREDITO E.I</p>
         </div>
+        
     </div>
   )
 }

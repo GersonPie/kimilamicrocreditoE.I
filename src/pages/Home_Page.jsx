@@ -22,8 +22,8 @@ const Home_Page = () => {
           </div>
           <div className="image-info-center-button">
               <p>GRÁFICO</p><img src={assets.icon_graph2} alt="" />
-            </div>
-          <img className='home-main-image' src={assets.money_img} alt="" />
+          </div>
+          
           
         </div>
 

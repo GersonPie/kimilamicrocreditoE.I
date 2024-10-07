@@ -10,7 +10,7 @@ export const NavBar = () => {
         <div className="navbar-each-icon-wrapper">
             <img src={assets.icon_home} onClick={
                 ()=>{
-                    go_to_page("boot")
+                    go_to_page("home")
                 }
             } alt="" />
         </div>
