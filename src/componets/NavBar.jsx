@@ -4,7 +4,7 @@ import App, { AppContext } from '../App'
 
 export const NavBar = () => {
 
-    const {go_to_page} = useContext(AppContext)
+    const {go_to_page, active_add_clients} = useContext(AppContext)
   return (
     <div className="navbar">
         <div className="navbar-each-icon-wrapper">
@@ -26,7 +26,7 @@ export const NavBar = () => {
         <div className="navbar-each-icon-wrapper">
             <img src={assets.icon_add} onClick={
                 ()=>{
-                    go_to_page("add_client")
+                    active_add_clients()
                 }
             } alt="" />
         </div>

@@ -1,22 +1,45 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import Home_Page from "./pages/Home_Page";
-import { StartPage } from "./pages/start_page";
-import Clients_page from "./pages/Clients_page";
+import { StartPage } from "./pages/Start_page";
 import { Topbar } from "./componets/Topbar";
 import { NavBar } from "./componets/NavBar";
+import { ClientsPage } from "./pages/ClientsPage";
 import { Add_Clients } from "./pages/Add_Clients";
+
+
+
 export const AppContext = createContext();
+
+
 function App() {
   const [currentPage, setCurrentPage] = useState(<StartPage />);
   const [animation, setAnimation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  
+  const [is_add_clients_tab_active, activeClientsTab] = useState(false);
+  const [addClientsAnimation, setAddClientsAnimation] = useState("");
+
+  const active_add_clients=()=>{
+    if(addClientsAnimation.length)return;
+      else{
+    
+    if(is_add_clients_tab_active){
+      setAddClientsAnimation("slideout")
+      setTimeout(()=>activeClientsTab(false), 300);
+    }
+    else{
+      setAddClientsAnimation("slidein")
+      activeClientsTab(true);
+    }
+  }
+    setTimeout(()=>setAddClientsAnimation(''), 400);
+  }
+
   const go_to_page =(pagename)=>{
     let newCurrentPage = <StartPage/>;
     
     if(pagename == "boot")newCurrentPage =<StartPage/>
     else if(pagename == "home") newCurrentPage = <><Topbar/><Home_Page/><NavBar/></>
-    else if(pagename == "clients") newCurrentPage = <><Topbar/><Clients_page/><NavBar/></>
+    else if(pagename == "clients") newCurrentPage = <><Topbar/><ClientsPage/><NavBar/></>
     else newCurrentPage = <StartPage />
 
 
@@ -24,6 +47,9 @@ function App() {
     else{
     setAnimation("fadeaway")
     setIsLoading(true)
+    if(is_add_clients_tab_active){
+      active_add_clients()
+    }
     setTimeout(()=>{
       setCurrentPage(newCurrentPage)
     },200)
@@ -42,7 +68,11 @@ function App() {
   
   return (
     <div className="app">
-      <AppContext.Provider value={{go_to_page, loader}}>
+      
+      <AppContext.Provider value={{go_to_page, loader, active_add_clients}}>
+        {
+          is_add_clients_tab_active && <Add_Clients animation={addClientsAnimation}/>
+        }
         {isLoading && <div className="loader">
           <div className="loading-effect"></div>
           </div>}

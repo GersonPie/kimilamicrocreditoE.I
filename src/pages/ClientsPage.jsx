@@ -2,7 +2,7 @@ import React from 'react'
 import { assets } from '../assets/assets'
 import { ClientsEach } from '../componets/ClientsEach'
 
-const Clients_page = () => {
+export const ClientsPage = () => {
   return (
     <div className="main-container clients">
       <div className="clients-top">
@@ -20,4 +20,3 @@ const Clients_page = () => {
   )
 }
 
-export default Clients_page

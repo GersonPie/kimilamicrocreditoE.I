@@ -4,6 +4,11 @@
   margin: 0px;
   font-family: Poppins;
 }
+
+:root{
+  --orange: #F68C3F;
+  --orange-input: #fde8df;
+}
 /*START PAGE*/
 .startPage{
   display: flex;
@@ -114,7 +119,7 @@
   background: url(./assets/home-page-money.png);
   background-size: cover;
   background-repeat:no-repeat;
-  background-position: ;
+  
   display: flex;
   flex-direction: column;
   
@@ -206,4 +211,57 @@
   & .dollar-icon{
     padding: 0 5px;
   }
+}
+
+.slidein{
+  animation: slide-in .2s ease-in;
+}
+.slideout{
+  animation: slide-out .4s ease-out;
+}
+.addclients{
+  
+  
+  position: fixed;
+  background-color: #fff;
+  padding: 20px 0;
+  height: 40vh;
+  bottom: 0;
+  border-radius: 20px;
+  box-shadow: #00000028 -5px -5px 5px;
+  width: 100vw;
+  margin: auto;
+}
+.addclient-field{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  height: fit-content;
+  margin: auto;
+  margin-top: 40px;
+  
+}
+.addclient-input{
+  background-color: var(--orange-input);
+  border: 0;
+  padding: 10px;
+  border-radius: 50px;
+}
+.addclient-submit{
+  fill: var(--orange);
+  border: 0;
+  padding: 9px;
+  border-radius: 50px;
+  position: absolute;
+  margin-left: 230px;
+}
+.addclient-top{
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  align-self: start;
+  
 }

@@ -28,3 +28,22 @@
         opacity: 0;
     }
 }
+
+@keyframes slide-in {
+    from{
+        bottom: -30vh;
+
+    }
+    to{
+        bottom: 0px;
+    }
+}
+@keyframes slide-out{
+    from{
+        bottom: 0px;
+
+    }
+    to{
+        bottom: -100vh;
+    }
+}
