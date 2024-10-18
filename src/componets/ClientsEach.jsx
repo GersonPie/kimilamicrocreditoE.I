@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
+import { AppContext } from '../App'
+
+
 
 export const ClientsEach = (props) => {
+    const { go_to_page, activeClientOBJ } = useContext(AppContext)
+
+    const handleClick = ()=>{
+        
+
+        activeClientOBJ.setActiveClientID("hello")
+        go_to_page('individual-client');
+        
+        return 
+    }
+
   return (
     
-    <div className="clients-each">
+    <div className="clients-each" onClick={
+        handleClick
+    }>
         <img className='avatar' src={props.avatar} alt="username" />
         <div className="client-details">
             <h3>Nelson Marsal</h3>

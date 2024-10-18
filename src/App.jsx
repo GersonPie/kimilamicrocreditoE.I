@@ -5,11 +5,11 @@ import { Topbar } from "./componets/Topbar";
 import { NavBar } from "./componets/NavBar";
 import { ClientsPage } from "./pages/ClientsPage";
 import { Add_Clients } from "./pages/Add_Clients";
-
-
+import { Graph_Page } from "./pages/Graph_Page";
+import { Settings_Page } from "./pages/Settings_Page";
+import { Individual_client_View } from "./pages/Clients/Individual_client_View";
 
 export const AppContext = createContext();
-
 
 function App() {
   const [currentPage, setCurrentPage] = useState(<StartPage />);
@@ -17,6 +17,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [is_add_clients_tab_active, activeClientsTab] = useState(false);
   const [addClientsAnimation, setAddClientsAnimation] = useState("");
+  const [activeClientID, setActiveClientID] = useState("212dawd21");
 
   const active_add_clients=()=>{
     if(addClientsAnimation.length)return;
@@ -40,6 +41,9 @@ function App() {
     if(pagename == "boot")newCurrentPage =<StartPage/>
     else if(pagename == "home") newCurrentPage = <><Topbar/><Home_Page/><NavBar/></>
     else if(pagename == "clients") newCurrentPage = <><Topbar/><ClientsPage/><NavBar/></>
+    else if(pagename == "graph") newCurrentPage = <><Topbar/><Graph_Page/><NavBar/></>
+    else if(pagename == "settings") newCurrentPage = <><Topbar/><Settings_Page/><NavBar/></>
+    else if(pagename == "individual-client") newCurrentPage = <><Topbar/><Individual_client_View clientID={activeClientID}/><NavBar/></>
     else newCurrentPage = <StartPage />
 
 
@@ -66,10 +70,15 @@ function App() {
     setIsLoading
   }
   
+  const activeClientOBJ = {
+    activeClientID,
+    setActiveClientID
+  }
+
   return (
     <div className="app">
       
-      <AppContext.Provider value={{go_to_page, loader, active_add_clients}}>
+      <AppContext.Provider value={{activeClientOBJ,go_to_page, loader, active_add_clients}}>
         {
           is_add_clients_tab_active && <Add_Clients animation={addClientsAnimation}/>
         }
