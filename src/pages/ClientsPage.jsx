@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 import { ClientsEach } from '../componets/ClientsEach'
+import { fakedata } from '../assets/fakedata'
 
 export const ClientsPage = () => {
+  const [listOfUsers, setListOfUsers] = useState(null)
+
+  useEffect(()=>{
+    let __USER_PROTO = [];
+    fakedata.map(user =>{
+      __USER_PROTO.push(<ClientsEach key={user.id} id={user.id} name={user.name} avatar={user.avatar}/>)
+    })
+    setListOfUsers(__USER_PROTO);
+  },[])
   return (
     <div className="main-container clients">
       <div className="clients-top">
@@ -11,10 +21,7 @@ export const ClientsPage = () => {
       </div>
 
       <div className="clients-body">
-      <ClientsEach avatar={assets.avatar} />
-      <ClientsEach avatar={assets.avatar} />
-      <ClientsEach avatar={assets.avatar} />
-      <ClientsEach avatar={assets.avatar} />
+        {listOfUsers}
       </div>
     </div>
   )

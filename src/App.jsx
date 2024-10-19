@@ -17,7 +17,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [is_add_clients_tab_active, activeClientsTab] = useState(false);
   const [addClientsAnimation, setAddClientsAnimation] = useState("");
-  const [activeClientID, setActiveClientID] = useState("212dawd21");
+  const [activeClientID, setActiveClientID] = useState("");
 
   const active_add_clients=()=>{
     if(addClientsAnimation.length)return;

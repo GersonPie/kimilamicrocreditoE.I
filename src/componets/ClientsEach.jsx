@@ -10,9 +10,9 @@ export const ClientsEach = (props) => {
     const handleClick = ()=>{
         
 
-        activeClientOBJ.setActiveClientID("hello")
+        activeClientOBJ.setActiveClientID(props.id)
         go_to_page('individual-client');
-        
+         
         return 
     }
 
@@ -23,7 +23,7 @@ export const ClientsEach = (props) => {
     }>
         <img className='avatar' src={props.avatar} alt="username" />
         <div className="client-details">
-            <h3>Nelson Marsal</h3>
+            <h3>{props.name}</h3>
             <div className="client-details-values">
                 <div className="client-details-loan-amount">
                     <img src={assets.wallet} alt="wallet" className='dollar-icon'/>

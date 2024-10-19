@@ -1,27 +1,27 @@
-
-
+import { assets } from "./assets"
+const avatar = assets.avatar
 export const fakedata = [
     {
-        id: "21121",
+        id: "211dw1",
         name: "José Eduardo",
         avatar
 
     },
     {
-        id: "21121",
+        id: "212dwa1",
         name: "Eduardo Fusseka",
         avatar
 
     },
     {
-        id: "21121",
+        id: "21a11",
         name: "Eduardo Costa",
         avatar
 
     },
     {
-        id: "21121",
-        name: "Eduardo Costa",
+        id: "211121",
+        name: "Manuel Mussa",
         avatar
 
     },

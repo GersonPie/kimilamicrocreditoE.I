@@ -265,3 +265,47 @@
   align-self: start;
   
 }
+
+.state-dot{
+  background-color: #F68C3F;
+  padding: 5px;
+  border-radius: 50%;
+}
+.profile-wrapper{
+  padding: 30px 5px;
+  background-color: rgba(51, 241, 12, 0.11);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+
+  & .profile-details{
+    color: #325a2aff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  & .profile-details-wrapper{
+    display:flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: left;
+  }
+  & img{
+    width: 60px;
+  }
+}
+.header-loan-details{
+  display: flex;
+  justify-content: space-between;
+}
+.loan-details{
+  width: 90%;
+  margin: auto;
+  margin-top: 50px;
+}
+.icon{
+  max-width: 24px;
+  max-height: 24px;
+}
