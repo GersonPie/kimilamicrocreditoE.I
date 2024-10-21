@@ -47,23 +47,26 @@ function App() {
     else newCurrentPage = <StartPage />
 
 
-    if(currentPage == newCurrentPage)return;
-    else{
-    setAnimation("fadeaway")
-    setIsLoading(true)
-    if(is_add_clients_tab_active){
-      active_add_clients()
-    }
-    setTimeout(()=>{
-      setCurrentPage(newCurrentPage)
-    },200)
-    setTimeout(() => {
-      setAnimation("start_logo_appear")
-      setIsLoading(false)
-        
-    }
-    ,300);
-    }
+    
+    
+      setAnimation("fadeaway")
+      setIsLoading(true)
+
+      if(is_add_clients_tab_active){
+        active_add_clients()
+      }
+
+      setTimeout(()=>{
+        setCurrentPage(newCurrentPage)
+      },200)
+      
+      setTimeout(() => {
+        setAnimation("start_logo_appear")
+        setIsLoading(false)
+          
+      }
+      ,300);
+    
   }
   const loader = {
     isLoading,
@@ -78,14 +81,15 @@ function App() {
   return (
     <div className="app">
       
-      <AppContext.Provider value={{activeClientOBJ,go_to_page, loader, active_add_clients}}>
+      <AppContext.Provider value={{activeClientOBJ,go_to_page, active_add_clients}}>
         {
           is_add_clients_tab_active && <Add_Clients animation={addClientsAnimation}/>
         }
-        {isLoading && <div className="loader">
+
+        <div className={isLoading ? "loader" : "hide"}>
           <div className="loading-effect"></div>
-          </div>}
-          
+        </div>
+
       <div className={"appwrapper " + animation}>
         
           

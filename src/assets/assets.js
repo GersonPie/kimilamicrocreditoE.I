@@ -12,6 +12,7 @@ import avatar from './avatar.png'
 import az from './icons/az.svg'
 import wallet from './icons/wallet.svg'
 import dollar from './icons/dollar.svg'
+import trash from './icons/trash.svg'
 
 
 export const assets = {
@@ -28,5 +29,6 @@ export const assets = {
     avatar,
     az,
     dollar,
-    wallet
+    wallet,
+    trash
 }

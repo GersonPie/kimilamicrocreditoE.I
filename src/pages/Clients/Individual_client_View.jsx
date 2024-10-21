@@ -3,12 +3,51 @@ import {AppContext} from '../../App'
 import { fakedata } from '../../assets/fakedata';
 import { assets } from '../../assets/assets';
 
+
+
+
+
+
+
 export const Individual_client_View = (props) => {
-  const [__ACTIVE_USER, setACTIVE_USER] = useState({})
+  const [__ACTIVE_USER, setACTIVE_USER] = useState(null)
+  const [hasLoadedData, setHasLoadedData] = useState(false)
+  const [totalPaid, setTotalPaid] = useState(0)
+  const [payments_display, set_payments_display] = useState(null)
   const {activeClientOBJ} = useContext(AppContext);
 
+
+  const load_payments=()=>{
+    if(__ACTIVE_USER != null){
+      let payments_proto = [];
+      let totalPaid_proto = 0;
+      
+      __ACTIVE_USER.loans.map((element)=>{
+        element.payments.map((e, index) =>{
+          
+          let a = <div key={index} className='individualpayments'>
+            <p>{e.date}</p>
+            <div className="individualpayments-wrapper">
+            <p>{e.ammount}.00MZN</p>
+            <img src={assets.trash} className='icon' alt="apagar pagamento" />
+            </div>
+            
+          </div>
+          totalPaid_proto += e.ammount
+          payments_proto.push(a)
+        })
+        
+      })
+      setTotalPaid(totalPaid_proto)
+      set_payments_display(payments_proto)
+      
+    return true;
+      
+    }
+    else return false
+  }
   useEffect(()=>{
-    fakedata.filter((user)=>{
+    fakedata.map((user)=>{
       if(user.id == activeClientOBJ.activeClientID){
         setACTIVE_USER(user);
       }
@@ -16,7 +55,12 @@ export const Individual_client_View = (props) => {
     
     
   }, [])
+  useEffect(()=>{
+    setHasLoadedData(load_payments());
+  }, [__ACTIVE_USER])
   return (
+    <>
+    {hasLoadedData &&
     <div className='main-container'>
         <h2>Cliente</h2> 
 
@@ -49,9 +93,18 @@ export const Individual_client_View = (props) => {
           </div>
 
           <div className="payments">
-            
+              {payments_display}
+
+
+              <div className="totalpaidwrapper">
+
+                <h3>Total Pago</h3>
+                <p>{totalPaid}.00MZN</p>
+
+              </div>
           </div>
         </div>
-    </div>
+    </div>}
+    </>
   )
 }

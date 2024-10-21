@@ -266,6 +266,10 @@
   
 }
 
+.hide{
+  display: none;
+}
+
 .state-dot{
   background-color: #F68C3F;
   padding: 5px;
@@ -308,4 +312,27 @@
 .icon{
   max-width: 24px;
   max-height: 24px;
+}
+
+.individualpayments{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  
+  border-radius: 10px;
+  align-items: center;
+  margin-top: 0px;
+  
+  & .individualpayments-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+.totalpaidwrapper{
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 0;
 }
