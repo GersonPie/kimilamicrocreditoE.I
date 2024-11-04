@@ -47,8 +47,6 @@ function App() {
     else newCurrentPage = <StartPage />
 
 
-    
-    
       setAnimation("fadeaway")
       setIsLoading(true)
 

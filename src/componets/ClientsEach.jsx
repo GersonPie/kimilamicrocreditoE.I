@@ -8,12 +8,8 @@ export const ClientsEach = (props) => {
     const { go_to_page, activeClientOBJ } = useContext(AppContext)
 
     const handleClick = ()=>{
-        
-
         activeClientOBJ.setActiveClientID(props.id)
         go_to_page('individual-client');
-         
-        return 
     }
 
   return (
@@ -27,12 +23,12 @@ export const ClientsEach = (props) => {
             <div className="client-details-values">
                 <div className="client-details-loan-amount">
                     <img src={assets.wallet} alt="wallet" className='dollar-icon'/>
-                    100.00MZN
+                    {props.loanAmmount}.00MZN
                 </div>
                 <div className="separator">|</div>
                 <div className="client-details-loan-amount">
                     <img src={assets.dollar} alt="wallet" className='dollar-icon' />
-                    30.00MZN
+                    {props.loanAmmount * 0.3}MZN
                 </div>
                 <div className="loan-state-dot"></div>
             </div>

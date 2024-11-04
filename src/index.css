@@ -336,3 +336,24 @@
   gap: 10px;
   padding: 20px 0;
 }
+
+.search-bar-div{
+  display: flex;
+  justify-content: center;
+  margin-left: -40px;
+  padding: 20px 0;
+  background-color: white;
+  & input{
+    outline: none;
+    padding: 7px;
+    border: none;
+    background-color: var(--orange-input);
+    border-radius: 50px;
+  }
+  & #search-bar-icon{
+    margin-left: -40px;
+    padding: 10px 0;
+  }
+
+}
+

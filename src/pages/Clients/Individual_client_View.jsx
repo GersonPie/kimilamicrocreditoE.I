@@ -4,11 +4,6 @@ import { fakedata } from '../../assets/fakedata';
 import { assets } from '../../assets/assets';
 
 
-
-
-
-
-
 export const Individual_client_View = (props) => {
   const [__ACTIVE_USER, setACTIVE_USER] = useState(null)
   const [hasLoadedData, setHasLoadedData] = useState(false)

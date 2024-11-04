@@ -13,6 +13,7 @@ import az from './icons/az.svg'
 import wallet from './icons/wallet.svg'
 import dollar from './icons/dollar.svg'
 import trash from './icons/trash.svg'
+import search from './icons/search-icon.svg'
 
 
 export const assets = {
@@ -30,5 +31,6 @@ export const assets = {
     az,
     dollar,
     wallet,
-    trash
+    trash,
+    search
 }
