@@ -52,6 +52,7 @@ export const Individual_client_View = (props) => {
   }, [])
   useEffect(()=>{
     setHasLoadedData(load_payments());
+    console.log(__ACTIVE_USER)
   }, [__ACTIVE_USER])
   return (
     <>
@@ -67,13 +68,17 @@ export const Individual_client_View = (props) => {
               <div className="profile-details">
                 <div className="profile-details-wrapper">
                   <img className='icon' src={assets.wallet} alt="" />
-                  <span>2400.00MZN</span>
+                  <span>{
+                    __ACTIVE_USER.loans[0].ammount
+                }.00MZN</span>
                 </div>
 
 
                 <div className="profile-details-wrapper">
                   <img className='icon' src={assets.dollar} alt="" />
-                  <span>720.00MZN</span>
+                  <span>{
+                    __ACTIVE_USER.loans[0].ammount * 0.3
+                }.00MZN</span>
                 </div>
             </div>
           </div>
@@ -95,10 +100,14 @@ export const Individual_client_View = (props) => {
 
                 <h3>Total Pago</h3>
                 <p>{totalPaid}.00MZN</p>
-
+                <br />
+                <h3>Saldo Actual</h3>
+                <p>{__ACTIVE_USER.loans[0].ammount-totalPaid}.00</p>
               </div>
           </div>
         </div>
+
+      
     </div>}
     </>
   )

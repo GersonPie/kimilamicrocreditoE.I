@@ -2,25 +2,25 @@ import { assets } from "./assets"
 const avatar = assets.avatar
 export const fakedata = [
     {
-        id: "211dw1",
+        id: "211ddw1dwd",
         name: "José Eduardo",
         avatar,
         loans: [
             {
                 id: 32212,
                 date: "21-Aug-2024",
-                ammount: 1900,
+                ammount: 5000.00,
                 deadline: "21-Sept-2024",
                 payments: [
                     {
                         id: Math.random() * 100,
-                        ammount: 600,
+                        ammount: 100,
                         date: "23-Aug-2024",
                         
                     },
                     {
                         id: Math.random() * 100,
-                        ammount: 200,
+                        ammount: 100,
                         date: "21-Aug-2024",
                         
                     },
@@ -30,6 +30,7 @@ export const fakedata = [
                         date: "24-Aug-2024",
                         
                     },
+                    
                 ]
             }
         ]
@@ -43,14 +44,14 @@ export const fakedata = [
         loans: [
             {
                 id: 32212,
-                date: "21-Aug-2024",
+                date: "28-Aug-2024",
                 ammount: 9200,
                 deadline: "21-Sept-2024",
                 payments: [
                     {
                         id: Math.random() * 100,
-                        ammount: 600,
-                        date: "23-Aug-2024",
+                        ammount: 100,
+                        date: "28-Aug-2024",
                         
                     },
                     {
@@ -107,7 +108,7 @@ export const fakedata = [
     },
 
     {
-        id: "211ddw1",
+        id: "211dddww1",
         name: "José Alfredo",
         avatar,
         loans: [
@@ -142,7 +143,7 @@ export const fakedata = [
     },
 
     {
-        id: "211ddw1",
+        id: "211ddw1aa",
         name: "Simão Bila",
         avatar,
         loans: [
@@ -177,7 +178,7 @@ export const fakedata = [
     },
 
     {
-        id: "211ddw1",
+        id: "211ddw211",
         name: "Lucas Munguambe",
         avatar,
         loans: [
@@ -212,7 +213,7 @@ export const fakedata = [
     },
 
     {
-        id: "211ddw1",
+        id: "2111ddw1",
         name: "Cesar Balate",
         avatar,
         loans: [

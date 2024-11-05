@@ -349,6 +349,7 @@
     border: none;
     background-color: var(--orange-input);
     border-radius: 50px;
+    width: 70%;
   }
   & #search-bar-icon{
     margin-left: -40px;

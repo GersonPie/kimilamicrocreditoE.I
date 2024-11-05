@@ -8,6 +8,7 @@ import { Add_Clients } from "./pages/Add_Clients";
 import { Graph_Page } from "./pages/Graph_Page";
 import { Settings_Page } from "./pages/Settings_Page";
 import { Individual_client_View } from "./pages/Clients/Individual_client_View";
+import { db, collection, getDocs } from './config/firebase';
 
 export const AppContext = createContext();
 
@@ -18,6 +19,31 @@ function App() {
   const [is_add_clients_tab_active, activeClientsTab] = useState(false);
   const [addClientsAnimation, setAddClientsAnimation] = useState("");
   const [activeClientID, setActiveClientID] = useState("");
+  const [users, setUsers] = useState([]);
+  const [loans, setLoans] = useState([]);
+  const [payments, setPayments] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          // Fetch all collections in parallel
+          const [usersSnapshot, loansSnapshot, paymentsSnapshot] = await Promise.all([
+            getDocs(collection(db, "users")),
+            getDocs(collection(db, "loans")),
+            getDocs(collection(db, "payments")),
+          ]);
+  
+          // Map and set the data for each collection
+          setUsers(usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+          setLoans(loansSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+          setPayments(paymentsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+        } catch (error) {
+          console.error("Error fetching data: ", error);
+        }
+      };
+  
+      fetchData();
+  }, []);
 
   const active_add_clients=()=>{
     if(addClientsAnimation.length)return;
@@ -70,6 +96,11 @@ function App() {
     isLoading,
     setIsLoading
   }
+  const data={
+    users, 
+    loans, 
+    payments
+  }
   
   const activeClientOBJ = {
     activeClientID,
@@ -79,7 +110,7 @@ function App() {
   return (
     <div className="app">
       
-      <AppContext.Provider value={{activeClientOBJ,go_to_page, active_add_clients}}>
+      <AppContext.Provider value={{data,activeClientOBJ,go_to_page, active_add_clients}}>
         {
           is_add_clients_tab_active && <Add_Clients animation={addClientsAnimation}/>
         }
@@ -90,7 +121,7 @@ function App() {
 
       <div className={"appwrapper " + animation}>
         
-          
+      
       {currentPage}
 
         

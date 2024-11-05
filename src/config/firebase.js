@@ -1,6 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -10,7 +13,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBnC3m4nJZEuSj5HBg1et5yIY9NKfANGNk",
   authDomain: "kimilamicrocredito-firebase.firebaseapp.com",
   projectId: "kimilamicrocredito-firebase",
-  storageBucket: "kimilamicrocredito-firebase.appspot.com",
+  storageBucket: "kimilamicrocredito-firebase.firebasestorage.app",
   messagingSenderId: "86381785446",
   appId: "1:86381785446:web:3c0864506f239d302bd8a7",
   measurementId: "G-CVK5MSMC9B"
@@ -19,3 +22,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
+
+
+// Obtenha uma referência ao Firestore
+const db = getFirestore(app);
+export {collection, getDocs,db}
