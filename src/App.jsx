@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import Home_Page from "./pages/Home_Page";
 import { StartPage } from "./pages/Start_page";
 import { Topbar } from "./componets/Topbar";
@@ -23,27 +23,28 @@ function App() {
   const [loans, setLoans] = useState([]);
   const [payments, setPayments] = useState([]);
   
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          // Fetch all collections in parallel
-          const [usersSnapshot, loansSnapshot, paymentsSnapshot] = await Promise.all([
-            getDocs(collection(db, "users")),
-            getDocs(collection(db, "loans")),
-            getDocs(collection(db, "payments")),
-          ]);
-  
-          // Map and set the data for each collection
-          setUsers(usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-          setLoans(loansSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-          setPayments(paymentsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-        } catch (error) {
-          console.error("Error fetching data: ", error);
-        }
-      };
-  
+
+  const fetchData = async () => {
+    try {
+      // Fetch all collections in parallel
+      const [usersSnapshot, loansSnapshot, paymentsSnapshot] = await Promise.all([
+        getDocs(collection(db, "users")),
+        getDocs(collection(db, "loans")),
+        getDocs(collection(db, "payments")),
+      ]);
+
+      // Map and set the data for each collection
+      setUsers(usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setLoans(loansSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setPayments(paymentsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
+  useEffect(() => {
       fetchData();
-  }, []);
+  }, [users, loans, payments]);
 
   const active_add_clients=()=>{
     if(addClientsAnimation.length)return;
@@ -110,7 +111,7 @@ function App() {
   return (
     <div className="app">
       
-      <AppContext.Provider value={{data,activeClientOBJ,go_to_page, active_add_clients}}>
+      <AppContext.Provider value={{data,activeClientOBJ,go_to_page, active_add_clients, fetchData}}>
         {
           is_add_clients_tab_active && <Add_Clients animation={addClientsAnimation}/>
         }

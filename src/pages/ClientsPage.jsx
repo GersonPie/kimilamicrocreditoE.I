@@ -13,7 +13,7 @@ export const ClientsPage = () => {
 
   
   useEffect(()=>{
-    console.log(users,loans)
+
     let __USER_PROTO = [];
     users.map(user =>{
       loans.map(loan =>{

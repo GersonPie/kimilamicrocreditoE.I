@@ -1,16 +1,28 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../App'
+import { db, collection } from '../config/firebase'
+import { addDoc } from 'firebase/firestore'
+
+
 export const Add_Clients = (props) => {
-  const {active_add_clients} = useContext(AppContext)
+  const {active_add_clients, fetchData} = useContext(AppContext)
   const [newUser, setNewUser ] = useState("")
 
-  const handleInputChange =(event)=>{
+  const handleInputChange = (event) =>{
     setNewUser(event.target.value)
   }
 
-  const handleSubmit = ()=>{
-    //
-    alert("App em desenvolvimento... 867850576")
+  const handleSubmit = async () => {
+    const userID = `user${new Date().getTime()}`
+    await addDoc(collection(db, "users"),{
+      name:newUser ,
+      id: userID,
+      type: "user"
+    }).then(()=>{
+      fetchData()
+    }).catch(err =>{
+      console.error("error fetching data after addClient ",err)
+    })
   }
 
 

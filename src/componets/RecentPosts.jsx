@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { fakedata } from '../assets/fakedata'
 import { AppContext } from '../App'
+import { assets } from '../assets/assets'
 export const RecentPosts = () => {
     const [recentView, setRecentView] = useState(null)
-   
-
+    const { data } = useContext(AppContext)
+    const {users, loans, payments} = data;
     
 
     useEffect(()=>{
-        let proto_recent = fakedata.map(data=>{
-            return <IndividualRecentPost id={data.id}  profile={data.avatar} name={data.name} />
+        let proto_recent = users.map(user=>{
+            return <IndividualRecentPost id={user.id}  profile={assets.avatar} name={user.name} />
         })
         setRecentView(proto_recent)
         console.log(proto_recent)

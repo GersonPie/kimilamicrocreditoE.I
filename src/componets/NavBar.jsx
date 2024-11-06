@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
-import App, { AppContext } from '../App'
+import { AppContext } from '../App'
 
 export const NavBar = () => {
 
