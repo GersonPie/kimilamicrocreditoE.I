@@ -18,7 +18,7 @@ const Home_Page = () => {
               <h2>6.481,90MZN</h2>
             </div>
           </div>
-          <div onClick={go_to_page('graph')} className="image-info-center-button">
+          <div onClick={()=>go_to_page('graph')} className="image-info-center-button">
               <p>GRÁFICO</p><img src={assets.icon_graph2} alt="" />
           </div>
           

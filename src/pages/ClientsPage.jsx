@@ -8,7 +8,7 @@ export const ClientsPage = () => {
   const [listOfUsers, setListOfUsers] = useState(null)
   const {data} = useContext(AppContext);
 
-  const {users, loans, payments} = data;
+  const {users, loans} = data;
 
 
   
@@ -16,11 +16,21 @@ export const ClientsPage = () => {
 
     let __USER_PROTO = [];
     users.map(user =>{
-      loans.map(loan =>{
+      const user_loans = loans.filter(loan =>{
+        console.log(loan.userId, user.id)
+        if(loan.userId == user.id) return true
         
-        if(loan.userId === user.id)
-        __USER_PROTO.push(<ClientsEach key={user.id} id={user.id} loanAmmount={loan.amount} name={user.name} avatar={assets.avatar}/>)
-      })
+        
+      }
+    )
+    user_loans.map(loan=>{
+      if(loan.active)__USER_PROTO.push(<ClientsEach key={user.id} id={user.id} loanAmmount={loan.amount} name={user.name} avatar={assets.avatar}/>)
+      
+    })
+    
+    if(!user_loans.length){
+      __USER_PROTO.push(<ClientsEach key={user.id} id={user.id} loanAmmount={0} name={user.name} avatar={assets.avatar}/>)
+    }
       
       
     })
