@@ -25,6 +25,7 @@ function App() {
   
 
   const fetchData = async () => {
+    console.log('fetching')
     try {
       // Fetch all collections in parallel
       const [usersSnapshot, loansSnapshot, paymentsSnapshot] = await Promise.all([
@@ -44,7 +45,7 @@ function App() {
 
   useEffect(() => {
       fetchData();
-  }, [users, loans, payments]);
+  }, []);
 
   const active_add_clients=()=>{
     if(addClientsAnimation.length)return;

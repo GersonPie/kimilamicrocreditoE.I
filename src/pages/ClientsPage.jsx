@@ -17,7 +17,7 @@ export const ClientsPage = () => {
     let __USER_PROTO = [];
     users.map(user =>{
       const user_loans = loans.filter(loan =>{
-        console.log(loan.userId, user.id)
+        
         if(loan.userId == user.id) return true
         
         

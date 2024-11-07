@@ -300,6 +300,51 @@
     width: 60px;
   }
 }
+.loan-list .loans-list-header{
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.newLoanBTN{
+  width: fit-content;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #F68C3F;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+.individualpayment{
+  display: flex;
+  justify-content: space-between;
+  & div{
+    display: flex;
+    gap: 10px;
+  }
+}
+.loan-header{
+  display: flex;
+  justify-content: space-between;
+}
+.loans-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.loan{
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 1px solid #00000028;
+  padding: 5px;
+  border-radius: 10px;
+  
+}
 .header-loan-details{
   display: flex;
   justify-content: space-between;
@@ -313,21 +358,33 @@
   max-width: 24px;
   max-height: 24px;
 }
-
-.individualpayments{
+.yesnoprompt{
   display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  
-  border-radius: 10px;
+  justify-content: center;
   align-items: center;
-  margin-top: 0px;
-  
-  & .individualpayments-wrapper{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  text-align: center;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffffe3;
+  gap: 30px;
+}
+.btns{
+  display: flex;
+  gap: 10px;
+}
+.red{
+  background-color: red !important;
+}
+.btn{
+  background-color: black;
+  color: white;
+  padding: 5px 10px ;
+  border-radius: 10px;
 }
 .totalpaidwrapper{
   text-align: right;

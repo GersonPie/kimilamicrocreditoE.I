@@ -9,10 +9,10 @@ export const RecentPosts = () => {
 
     useEffect(()=>{
         let proto_recent = users.map(user=>{
-            return <IndividualRecentPost id={user.id}  profile={assets.avatar} name={user.name} />
+            return <IndividualRecentPost key={user.id} id={user.id}  profile={assets.avatar} name={user.name} />
         })
         setRecentView(proto_recent)
-        console.log(proto_recent)
+        
     }, [])
   return (
     <div className="recentposts">
