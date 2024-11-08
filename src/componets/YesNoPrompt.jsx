@@ -11,7 +11,7 @@ export const YesNoPrompt = ({msg,min, max, action,value, setShowYes,setValue}) =
     const timerID = setTimeout(()=>{
       setWarning('');
       clearTimeout(timerID);
-    }, 5000)
+    }, 8000)
     
   }
   const handleCreateLoan=()=>{
@@ -20,7 +20,8 @@ export const YesNoPrompt = ({msg,min, max, action,value, setShowYes,setValue}) =
       
       else if(value > max)
         warnUser(`O valor maximo possivel é ${max}MZN`)
-      
+      else if(max - value < min && max - value !== 0)
+        warnUser(`Ao pagar ${value}MZN remanescente será ${max-value}MZN, o que é menor que o minimo de pagamento. Pague ${max}MZN`)
       else{
         action();
         setShowYes(false)
@@ -31,20 +32,19 @@ export const YesNoPrompt = ({msg,min, max, action,value, setShowYes,setValue}) =
   
 
   return (
-    <div className='yesnoprompt'>
+    <form className='yesnoprompt' onSubmit={(e)=>e.preventDefault()}>
         <h3>{msg}</h3>
         <p>{warning}</p>
         <div>
           <input value={value} type="number" onChange={(e)=>setValue(e.target.value)}/>
         </div>
         <div className='btns'>
-          <div onClick={handleCreateLoan} className="btn">
-            Sim
-          </div>
+          <input value='Sim' type='submit' onClick={handleCreateLoan} className="btn"/>
+            
           <div onClick={()=>{setShowYes(false)}} className="btn red">
             Não
           </div>
         </div>
-    </div>
+    </form>
   )
 }

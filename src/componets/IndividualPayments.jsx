@@ -6,7 +6,7 @@ export const IndividualPayment =({date, amount})=>{
     return (
       <div className="individualpayment">
         <p>{date.toDate().toLocaleDateString()}</p>
-        <div><p>{amount}mzn</p><img className="icon" src={assets.trash} alt="" /></div>
+        <div><p>{amount}mzn</p><img className="icon" src={assets.trash}/></div>
       </div>
     )
   }

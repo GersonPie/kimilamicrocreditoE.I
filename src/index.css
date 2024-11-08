@@ -100,6 +100,10 @@
   width: 100%;
   
 }
+.rotate-down{
+  transition: .5s;
+  rotate: 90deg;
+}
 .image-info{
   display: flex;
   color: white;

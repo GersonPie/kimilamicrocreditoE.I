@@ -46,7 +46,7 @@ const [newLoanValue, setNewLoanValue] = useState(false)
   return (
     <div className={loan.active ? "active-loan loan" : "loan"} >
         <div className='loan-header'>
-            <p onClick={()=>{setSelectedLoan(loan.id !== selectedLoan ? loan.id : "")}}>{loan.id}</p>
+            <p onClick={()=>{setSelectedLoan(loan.id !== selectedLoan ? loan.id : "")}}><svg className={selectedLoan === loan.id && "rotate-down"} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></p>
             <p>{loan.amount}MZN</p>
         </div>
         { selectedLoan === loan.id &&
