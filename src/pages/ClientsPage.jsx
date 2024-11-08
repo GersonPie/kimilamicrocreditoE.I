@@ -13,7 +13,7 @@ export const ClientsPage = () => {
 
   
   useEffect(()=>{
-
+    console.log("users changed")
     let __USER_PROTO = [];
     users.map(user =>{
       const user_loans = loans.filter(loan =>{
@@ -35,7 +35,7 @@ export const ClientsPage = () => {
       
     })
     setListOfUsers(__USER_PROTO);
-  },[])
+  },[users])
   return (
     <div className="main-container clients">
 

@@ -51,7 +51,7 @@ export const Individual_client_View = (props) => {
       amount: newLoanAmount,
       date: Timestamp.fromDate(new Date()),
       deadline: getFollowingMonthFirstDay(),
-      id: `loan ${new Date().getDate()}`,
+      id: `loan${new Date().getTime()}`,
       userId: activeUser.id
 
    }) 
@@ -63,7 +63,7 @@ export const Individual_client_View = (props) => {
         setActiveLoan(loan)
       }
     })
-  }, [userLoans])
+  }, [userLoans, loans])
 
 
   useEffect(()=>{
@@ -76,7 +76,7 @@ export const Individual_client_View = (props) => {
       }
     })
 
-  }, [])
+  }, [loans])
   return (
     <>
     
@@ -119,7 +119,7 @@ export const Individual_client_View = (props) => {
       <div onClick={()=>{setShowYes(true)}} className="newLoanBTN">
         Adicionar Emprestimo
       </div>
-      {showYes && <YesNoPrompt newLoanAmount={newLoanAmount} msg={`Deseja criar novo emprestimo para \n ${activeUser.name}`} setShowYes={setShowYes} setAnswer={createNewLoan} setNewLoanAmount={setNewLoanAmount} />}
+      {showYes && <YesNoPrompt value={newLoanAmount} msg={`Deseja criar novo emprestimo para \n ${activeUser.name}`} setShowYes={setShowYes} action={createNewLoan} setValue={setNewLoanAmount} />}
     </div>
     </>
   )

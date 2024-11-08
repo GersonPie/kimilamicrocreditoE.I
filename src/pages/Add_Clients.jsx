@@ -18,8 +18,6 @@ export const Add_Clients = (props) => {
       name:newUser ,
       id: userID,
       type: "user"
-    }).then(()=>{
-      fetchData()
     }).catch(err =>{
       console.error("error fetching data after addClient ",err)
     })

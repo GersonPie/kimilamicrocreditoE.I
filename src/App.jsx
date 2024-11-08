@@ -9,6 +9,7 @@ import { Graph_Page } from "./pages/Graph_Page";
 import { Settings_Page } from "./pages/Settings_Page";
 import { Individual_client_View } from "./pages/Clients/Individual_client_View";
 import { db, collection, getDocs } from './config/firebase';
+import { onSnapshot } from "firebase/firestore";
 
 export const AppContext = createContext();
 
@@ -24,28 +25,32 @@ function App() {
   const [payments, setPayments] = useState([]);
   
 
-  const fetchData = async () => {
-    console.log('fetching')
-    try {
-      // Fetch all collections in parallel
-      const [usersSnapshot, loansSnapshot, paymentsSnapshot] = await Promise.all([
-        getDocs(collection(db, "users")),
-        getDocs(collection(db, "loans")),
-        getDocs(collection(db, "payments")),
-      ]);
-
-      // Map and set the data for each collection
-      setUsers(usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-      setLoans(loansSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-      setPayments(paymentsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
-  };
+  
 
   useEffect(() => {
-      fetchData();
-  }, []);
+    const unsubscribeUsers = onSnapshot(collection(db, "users"), (snapshot) => {
+      setUsers(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    });
+
+    return () => unsubscribeUsers(); // Cleanup function to unsubscribe on unmount
+  }, [db]);
+
+  useEffect(() => {
+    const unsubscribeLoans = onSnapshot(collection(db, "loans"), (snapshot) => {
+      setLoans(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    });
+
+    return () => unsubscribeLoans(); // Cleanup function to unsubscribe on unmount
+  }, [db]);
+
+  useEffect(() => {
+    const unsubscribePayments = onSnapshot(collection(db, "payments"), (snapshot) => {
+      setPayments(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    });
+
+    return () => unsubscribePayments(); // Cleanup function to unsubscribe on unmount
+  }, [db]);
+
 
   const active_add_clients=()=>{
     if(addClientsAnimation.length)return;
@@ -112,7 +117,7 @@ function App() {
   return (
     <div className="app">
       
-      <AppContext.Provider value={{data,activeClientOBJ,go_to_page, active_add_clients, fetchData}}>
+      <AppContext.Provider value={{data,activeClientOBJ,go_to_page, active_add_clients}}>
         {
           is_add_clients_tab_active && <Add_Clients animation={addClientsAnimation}/>
         }
