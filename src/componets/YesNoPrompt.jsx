@@ -32,11 +32,11 @@ export const YesNoPrompt = ({msg,min, max, action,value, setShowYes,setValue}) =
   
 
   return (
-    <form className='yesnoprompt' onSubmit={(e)=>e.preventDefault()}>
+    <form className='yesnoprompt' onSubmit={(e)=>e.preventDefault()} onKeyDown={(e)=> e.key === "Esc" && setShowYes(false)}>
         <h3>{msg}</h3>
         <p>{warning}</p>
         <div>
-          <input value={value} type="number" onChange={(e)=>setValue(e.target.value)}/>
+          <input value={value} type="number" onChange={(e)=>setValue(e.target.value)} autoFocus/>
         </div>
         <div className='btns'>
           <input value='Sim' type='submit' onClick={handleCreateLoan} className="btn"/>

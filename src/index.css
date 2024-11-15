@@ -9,6 +9,7 @@
   --orange: #F68C3F;
   --orange-input: #fde8df;
 }
+
 /*START PAGE*/
 .startPage{
   display: flex;
@@ -309,7 +310,7 @@
   margin: auto;
   display: flex;
   justify-content: space-between;
-  
+  margin-top: 30px;
 }
 .newLoanBTN{
   width: fit-content;
@@ -323,6 +324,7 @@
 }
 .individualpayment{
   display: flex;
+  padding: 5px 0;
   justify-content: space-between;
   & div{
     display: flex;
@@ -332,6 +334,7 @@
 .loan-header{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .loans-wrapper{
   display: flex;
@@ -386,6 +389,12 @@
   justify-content: center;
   border-radius: 50%;
   margin: 10px;
+}
+.totals{
+  margin-top: 20px;
+}
+.separator{
+  padding: 10px;
 }
 .yesnoprompt{
   display: flex;

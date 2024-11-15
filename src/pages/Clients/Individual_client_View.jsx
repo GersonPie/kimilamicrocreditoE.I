@@ -116,7 +116,17 @@ export const Individual_client_View = (props) => {
         
       </div>
 
-      <div onClick={()=>{setShowYes(true)}} className="newLoanBTN">
+      <div onClick={()=>{
+        loans.map(l =>{
+          if(l.active){
+            setShowYes(false)
+          }
+          else{
+            setShowYes(true)
+          }
+        })
+        setShowYes(true)
+        }} className="newLoanBTN">
         Adicionar Emprestimo
       </div>
       {showYes && <YesNoPrompt value={newLoanAmount} msg={`Deseja criar novo emprestimo para \n ${activeUser.name}`} setShowYes={setShowYes} action={createNewLoan} setValue={setNewLoanAmount} />}

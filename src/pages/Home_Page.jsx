@@ -8,7 +8,7 @@ const Home_Page = () => {
 
   return (
     <div className="main-container homepage">
-        <h2>Inicio</h2>
+        
 
         <div className="home-main-image-wrapper">
           <div className="image-info">

@@ -8,13 +8,14 @@ import { Add_Clients } from "./pages/Add_Clients";
 import { Graph_Page } from "./pages/Graph_Page";
 import { Settings_Page } from "./pages/Settings_Page";
 import { Individual_client_View } from "./pages/Clients/Individual_client_View";
+import Login from './pages/Login/Login'
 import { db, collection, getDocs } from './config/firebase';
 import { onSnapshot } from "firebase/firestore";
 
 export const AppContext = createContext();
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(<StartPage />);
+  const [currentPage, setCurrentPage] = useState(<Login />);
   const [animation, setAnimation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [is_add_clients_tab_active, activeClientsTab] = useState(false);
@@ -26,7 +27,7 @@ function App() {
   
 
   
-
+// fetches and watches the data changes in the database
   useEffect(() => {
     const unsubscribeUsers = onSnapshot(collection(db, "users"), (snapshot) => {
       setUsers(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
@@ -34,6 +35,9 @@ function App() {
 
     return () => unsubscribeUsers(); // Cleanup function to unsubscribe on unmount
   }, [db]);
+//////////////////////////////////////////////////////
+
+
 
   useEffect(() => {
     const unsubscribeLoans = onSnapshot(collection(db, "loans"), (snapshot) => {
@@ -69,7 +73,7 @@ function App() {
   }
 
   const go_to_page =(pagename)=>{
-    let newCurrentPage = <StartPage/>;
+    let newCurrentPage = <Login/>;
     
     if(pagename == "boot")newCurrentPage =<StartPage/>
     else if(pagename == "home") newCurrentPage = <><Topbar/><Home_Page/><NavBar/></>
