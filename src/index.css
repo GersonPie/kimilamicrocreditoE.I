@@ -200,13 +200,15 @@
   & .client-details{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    
+    justify-content: center;
 
     & .client-details-values{
       color: #325a2aff;
       display: flex;
       gap: 10px;
       font-size: small;
+      align-items: center;
     }
   }
   & .avatar{
