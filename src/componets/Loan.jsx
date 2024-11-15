@@ -22,16 +22,18 @@ const [newLoanValue, setNewLoanValue] = useState(false)
       loanId: loan.id
       
    })
-
-   if((Number(loan.amount) + Number(loan.amount)*0.3) - totalPaid == 0){
-    await updateDoc(doc(db,"loans", loan.firestoreID), {
-      active: false
-    })
-   }
   }
 
   
-
+  useEffect(()=>{
+    const updateActive = async ()=>{
+      if((Number(loan.amount) + Number(loan.amount)*0.3) - totalPaid == 0){
+        console.log(loan.firestoreID)
+        await updateDoc(doc(db,"loans", loan.firestoreID), {active: false})
+       }
+    }
+    updateActive()
+  }, [totalPaid])
   useEffect(()=>{
     var total_paid_sum = 0;
     if(selectedLoan === loan.id){
@@ -39,12 +41,13 @@ const [newLoanValue, setNewLoanValue] = useState(false)
       const list = payments.map(payment => {
         if(payment.loanId === loan.id){
           total_paid_sum += Number(payment.amount)
-          return <IndividualPayment firestoreID={payment.firestoreID} key={payment.id} date={payment.date} amount={payment.amount} />
+          return <IndividualPayment isLoanActive={loan.active} firestoreID={payment.firestoreID} key={payment.id} date={payment.date} amount={payment.amount} />
         }
       })
       setLoanDropDown(list)
     }
     setTotalPaid(total_paid_sum)
+
   }, [selectedLoan, loan, payments])
 
 

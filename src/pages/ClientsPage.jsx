@@ -17,6 +17,7 @@ export const ClientsPage = () => {
   
   useEffect(()=>{
     let __USER_PROTO = [];
+    let activeLoan = {};
     users.map(user =>{
       const user_loans = loans.filter(loan =>{
   
@@ -25,11 +26,13 @@ export const ClientsPage = () => {
       }
     )
     user_loans.map(loan=>{
-      if(loan.active)__USER_PROTO.push(<ClientsEach key={user.id} id={user.id} loanAmmount={loan.amount} name={user.name} avatar={assets.avatar}/>)
-      
+      if(loan.active){
+        activeLoan = loan;
+        __USER_PROTO.push(<ClientsEach key={user.id} id={user.id} loanAmmount={loan.amount} name={user.name} avatar={assets.avatar}/>)
+      }
     })
     
-    if(!user_loans.length){
+    if(!user_loans.length || activeLoan.id == undefined){
       __USER_PROTO.push(<ClientsEach key={user.id} id={user.id} loanAmmount={0} name={user.name} avatar={assets.avatar}/>)
     }
       

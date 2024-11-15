@@ -4,8 +4,8 @@ import { AppContext } from '../../App'
 import { YesNoPrompt } from '../../componets/YesNoPrompt'
 import Loan from '../../componets/Loan'
 import { db } from '../../config/firebase'
-import {Timestamp, addDoc, collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore'
-
+import { Timestamp, addDoc, collection, query, where, getDocs, updateDoc } from 'firebase/firestore'
+import { WarnUser } from '../../componets/warnUser'
 
 
 export const Individual_client_View = () => {
@@ -18,6 +18,7 @@ export const Individual_client_View = () => {
   const [ selectedLoan, setSelectedLoan] = useState("")
   const [ showYes, setShowYes] = useState(false)
   const [newLoanAmount, setNewLoanAmount] = useState(0)
+  const [isShowing, setIsShowing] = useState(false)
   
 
   async function updateLoanStatus(customLoanId) {
@@ -37,12 +38,13 @@ export const Individual_client_View = () => {
 
 
   async function  createNewLoan (){
+    if(activeLoan !== undefined)return setIsShowing(true);
     function getFollowingMonthFirstDay() {
       const currentMonth = new Date().getMonth();
       const nextMonth = (currentMonth + 1) % 12;
       const nextYear = currentMonth === 11 ? new Date().getFullYear() + 1 : new Date().getFullYear();
     
-      return new Date(nextYear, nextMonth, new Date().getDay());
+      return new Date(nextYear, nextMonth, new Date().getDate());
     }
 
     updateLoanStatus(activeLoan?.id || 0)
@@ -51,13 +53,14 @@ export const Individual_client_View = () => {
       amount: newLoanAmount,
       date: Timestamp.fromDate(new Date()),
       deadline: getFollowingMonthFirstDay(),
-      id: `loan${new Date().getTime()}`,
+      id: new Date().getTime(),
       userId: activeUser.id
 
    }) 
   }
 
   useEffect(()=>{
+    setActiveLoan(undefined)
     userLoans.map(loan =>{
       if(loan.active === true){
         setActiveLoan(loan)
@@ -129,8 +132,9 @@ export const Individual_client_View = () => {
         }} className="newLoanBTN">
         Adicionar Emprestimo
       </div>
-      {showYes && <YesNoPrompt value={newLoanAmount} msg={`Deseja criar novo emprestimo para \n ${activeUser.name}`} setShowYes={setShowYes} action={createNewLoan} setValue={setNewLoanAmount} />}
+      {showYes && <YesNoPrompt min={500} max={25000} value={newLoanAmount} msg={`Deseja criar novo emprestimo para \n ${activeUser.name}`} setShowYes={setShowYes} action={createNewLoan} setValue={setNewLoanAmount} />}
     </div>
+    {isShowing &&<WarnUser message={"Pague o emprestimo actual antes de iniciar outro"} setIsShowing={setIsShowing} time={12000}/>}
     </>
   )
 }

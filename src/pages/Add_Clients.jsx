@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../App'
 import { db, collection } from '../config/firebase'
-import { addDoc } from 'firebase/firestore'
+import { addDoc, Timestamp} from 'firebase/firestore'
 
 
 export const Add_Clients = (props) => {
-  const {active_add_clients, fetchData} = useContext(AppContext)
+  const {active_add_clients} = useContext(AppContext)
   const [newUser, setNewUser ] = useState("")
 
   const handleInputChange = (event) =>{
@@ -18,7 +18,7 @@ export const Add_Clients = (props) => {
       name:newUser ,
       id: new Date().getTime(),
       type: "user",
-      date: new Date().getDate()
+      date: Timestamp.fromDate(new Date())
     }).then(()=>{
       setNewUser("")
     }).catch(err =>{

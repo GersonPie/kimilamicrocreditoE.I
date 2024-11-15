@@ -3,7 +3,7 @@ import { assets } from "../assets/assets"
 import { db } from "../config/firebase"
 import { deleteDoc,doc } from "firebase/firestore"
 
-export const IndividualPayment =({date, amount, firestoreID})=>{
+export const IndividualPayment =({date, amount, firestoreID, isLoanActive})=>{
     const handleDeletePayment = async ()=>{
       try{
         await deleteDoc(doc(db, "payments", firestoreID));
@@ -15,7 +15,7 @@ export const IndividualPayment =({date, amount, firestoreID})=>{
     return (
       <div className="individualpayment">
         <p>{date.toDate().toLocaleDateString()}</p>
-        <div><p>{amount}mzn</p><img onClick={handleDeletePayment} className="icon" src={assets.trash}/></div>
+        <div><p>{amount}mzn</p><img onClick={isLoanActive && handleDeletePayment} className="icon" src={assets.trash}/></div>
       </div>
     )
   }
