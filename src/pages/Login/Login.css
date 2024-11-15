@@ -25,7 +25,7 @@
     flex-direction: column;
     
 }
-.input{
+.input-login{
     padding: 5px 15px;
     border-radius: 50vw;
     border: 1px solid lightgray;
@@ -35,7 +35,7 @@
     width: 280px;
     font-family: Poppins, Arial;
 }
-.btn{
+.btn-login{
     color:white;
     background-color: var(--second-color);
     padding: 10px;

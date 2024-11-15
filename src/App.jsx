@@ -33,7 +33,7 @@ function App() {
       setUsers(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
     });
 
-    return () => unsubscribeUsers(); // Cleanup function to unsubscribe on unmount
+    return () => unsubscribeUsers();
   }, [db]);
 //////////////////////////////////////////////////////
 

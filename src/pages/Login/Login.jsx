@@ -63,17 +63,17 @@ const Login = () => {
             <h1>Login</h1>
             <div className="login-sec-wrapper">
             <span className='form-text-element'>Nome do Administrador</span>
-            <input value={adminName} onChange={(e)=>setAdminName(e.target.value)} type="text" name='username' className="input usename" required/>
+            <input value={adminName} onChange={(e)=>setAdminName(e.target.value)} type="text" name='username' className="input-login usename" required/>
             
             </div>
 
             <div className="login-sec-wrapper">
             <span className='form-text-element'>Palavra-passe</span>
-            <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" name='password' className="input password" required/>
+            <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" name='password' className="input-login password" required/>
             
             </div>
 
-            <button onClick={handleSubmit} className='btn'>Fazer Login</button>
+            <button onClick={handleSubmit} className='btn-login'>Fazer Login</button>
             <p style={{color: "red"}}>{msg}</p>
 
             <p className="recuperar-conta">Clique aqui para contactar <br/>o <a href="#">administrador</a></p>
