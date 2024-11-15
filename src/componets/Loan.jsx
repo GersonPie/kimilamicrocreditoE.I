@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { IndividualPayment } from './IndividualPayments'
 import { YesNoPrompt } from './YesNoPrompt'
-import { addDoc, collection, Timestamp } from 'firebase/firestore'
+import { addDoc, collection, doc, Timestamp, updateDoc } from 'firebase/firestore'
 import { db } from '../config/firebase'
 
 
@@ -18,12 +18,19 @@ const [newLoanValue, setNewLoanValue] = useState(false)
     await addDoc(collection(db, "payments"), {
       amount: newLoanValue,
       date: Timestamp.fromDate(new Date()),
-      id: `payment${new Date().getTime()}`,
+      id: new Date().getTime(),
       loanId: loan.id
+      
+   })
 
-   }) 
+   if((Number(loan.amount) + Number(loan.amount)*0.3) - totalPaid == 0){
+    await updateDoc(doc(db,"loans", loan.firestoreID), {
+      active: false
+    })
+   }
   }
 
+  
 
   useEffect(()=>{
     var total_paid_sum = 0;
@@ -32,7 +39,7 @@ const [newLoanValue, setNewLoanValue] = useState(false)
       const list = payments.map(payment => {
         if(payment.loanId === loan.id){
           total_paid_sum += Number(payment.amount)
-          return <IndividualPayment key={payment.id} date={payment.date} amount={payment.amount} />
+          return <IndividualPayment firestoreID={payment.firestoreID} key={payment.id} date={payment.date} amount={payment.amount} />
         }
       })
       setLoanDropDown(list)
@@ -55,7 +62,7 @@ const [newLoanValue, setNewLoanValue] = useState(false)
           {loanDropDown}
 
           <div className='payments-bottom-side-wrapper'>
-            <div className='➕div' onClick={()=>setShowYes(true)}>
+            <div className='➕div' onClick={()=>loan.active && setShowYes(true)}>
             <svg className='➕' xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
             </div>
             <div className="npm">
@@ -66,14 +73,14 @@ const [newLoanValue, setNewLoanValue] = useState(false)
 
               <div className='separator'>
                 <h4>Por Pagar</h4>
-                <span>{loan.amount - totalPaid}MZN</span>
+                <span>{(Number(loan.amount) + Number(loan.amount)*0.3) - totalPaid}MZN</span>
               </div>
             </div>
           </div>
 
           
         </div>}
-         {showYes && <YesNoPrompt msg={"Coloque o valor do pagamento"} action={handleAddPayment} value={newLoanValue} setShowYes={setShowYes} setValue={setNewLoanValue} max={Number(loan.amount - totalPaid)} min={100}/>}   
+         {showYes && <YesNoPrompt msg={"Coloque o valor do pagamento"} action={handleAddPayment} value={newLoanValue} setShowYes={setShowYes} setValue={setNewLoanValue} max={(Number(loan.amount) + Number(loan.amount)*0.3) - totalPaid} min={100}/>}   
     </div>
   )
 }

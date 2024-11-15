@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { db } from '../../config/firebase'
 import { collection, query, where, getDocs, doc, onSnapshot } from 'firebase/firestore'
 import { AppContext } from '../../App'
+import { WarnUser } from '../../componets/warnUser'
 import './Login.css'
 
 
@@ -11,7 +12,8 @@ const Login = () => {
   const [adminName, setAdminName] = useState("")
   const [password, setPassword] = useState("")
   const [login, setLogin] = useState(false)
-  const [msg, setMsg] = useState("")
+  const [isShowingWarn, setIsShowingWarn] = useState(false)
+  const [warnMsg, setWarnMsg] = useState("")
   
   useEffect(()=>{
     if(login === true){
@@ -45,14 +47,17 @@ const Login = () => {
           setLogin(true)
         }
         else{
-          setMsg("Dados incorrectos")
+          warn("Dados incorrectos") 
         }
       })
     } catch (error) {
       console.error("Error fetching admins:", error);
     }
   }
-
+  function warn(msg){
+          setWarnMsg(msg)
+          setIsShowingWarn(true)
+  }
   return (
       
 
@@ -74,7 +79,7 @@ const Login = () => {
             </div>
 
             <button onClick={handleSubmit} className='btn-login'>Fazer Login</button>
-            <p style={{color: "red"}}>{msg}</p>
+            {isShowingWarn && <WarnUser setIsShowing={setIsShowingWarn} message={warnMsg}/>}
 
             <p className="recuperar-conta">Clique aqui para contactar <br/>o <a href="#">administrador</a></p>
         </form>

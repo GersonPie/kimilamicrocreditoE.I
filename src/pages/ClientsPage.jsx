@@ -4,6 +4,9 @@ import { ClientsEach } from '../componets/ClientsEach'
 import { fakedata } from '../assets/fakedata'
 import { SearchBar } from '../componets/SearchBar'
 import App, { AppContext } from '../App'
+
+
+
 export const ClientsPage = () => {
   const [listOfUsers, setListOfUsers] = useState(null)
   const {data} = useContext(AppContext);
@@ -13,7 +16,6 @@ export const ClientsPage = () => {
 
   
   useEffect(()=>{
-    console.log("users changed")
     let __USER_PROTO = [];
     users.map(user =>{
       const user_loans = loans.filter(loan =>{

@@ -8,7 +8,7 @@ import {Timestamp, addDoc, collection, query, where, getDocs, updateDoc, doc } f
 
 
 
-export const Individual_client_View = (props) => {
+export const Individual_client_View = () => {
 
   const { activeClientOBJ, data } = useContext(AppContext)
   const { users, loans, payments } = data;

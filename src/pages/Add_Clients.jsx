@@ -13,14 +13,18 @@ export const Add_Clients = (props) => {
   }
 
   const handleSubmit = async () => {
-    const userID = `user${new Date().getTime()}`
+    
     await addDoc(collection(db, "users"),{
       name:newUser ,
-      id: userID,
-      type: "user"
+      id: new Date().getTime(),
+      type: "user",
+      date: new Date().getDate()
+    }).then(()=>{
+      setNewUser("")
     }).catch(err =>{
       console.error("error fetching data after addClient ",err)
     })
+
   }
 
 

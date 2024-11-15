@@ -11,7 +11,30 @@
         opacity: 1;
     }
 }
+.slide-msg-in{
+    animation: slide-msg 1s ease;
+}
+.slide-msg-out{
+    animation: slide-msg-out 1s;
+}
+@keyframes slide-msg {
+    from{
+        top: -30vh;
 
+    }
+    to{
+        top: 50px;
+    }
+}
+@keyframes slide-msg-out {
+    from{
+        
+        top: 50px;
+    }
+    to{
+        top: -30vh;
+    }
+}
 @keyframes loading-spin {
     100%{
         transform: rotate(360deg);

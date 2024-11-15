@@ -9,13 +9,14 @@ import { Graph_Page } from "./pages/Graph_Page";
 import { Settings_Page } from "./pages/Settings_Page";
 import { Individual_client_View } from "./pages/Clients/Individual_client_View";
 import Login from './pages/Login/Login'
-import { db, collection, getDocs } from './config/firebase';
+import { db, collection } from './config/firebase';
 import { onSnapshot } from "firebase/firestore";
+
 
 export const AppContext = createContext();
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(<Login />);
+  const [currentPage, setCurrentPage] = useState(<StartPage />);
   const [animation, setAnimation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [is_add_clients_tab_active, activeClientsTab] = useState(false);
@@ -30,7 +31,11 @@ function App() {
 // fetches and watches the data changes in the database
   useEffect(() => {
     const unsubscribeUsers = onSnapshot(collection(db, "users"), (snapshot) => {
-      setUsers(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+
+      var users_proto = snapshot.docs.map(doc => ({ firestoreID: doc.id, ...doc.data() }))
+
+      
+      setUsers(users_proto.sort((a, b) => a.id - b.id));
     });
 
     return () => unsubscribeUsers();
@@ -41,7 +46,7 @@ function App() {
 
   useEffect(() => {
     const unsubscribeLoans = onSnapshot(collection(db, "loans"), (snapshot) => {
-      setLoans(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setLoans(snapshot.docs.map(doc => ({ firestoreID: doc.id, ...doc.data() })));
     });
 
     return () => unsubscribeLoans(); // Cleanup function to unsubscribe on unmount
@@ -49,7 +54,7 @@ function App() {
 
   useEffect(() => {
     const unsubscribePayments = onSnapshot(collection(db, "payments"), (snapshot) => {
-      setPayments(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+      setPayments(snapshot.docs.map(doc => ({ firestoreID: doc.id, ...doc.data() })));
     });
 
     return () => unsubscribePayments(); // Cleanup function to unsubscribe on unmount
@@ -73,7 +78,7 @@ function App() {
   }
 
   const go_to_page =(pagename)=>{
-    let newCurrentPage = <Login/>;
+    let newCurrentPage = <StartPage/>;
     
     if(pagename == "boot")newCurrentPage =<StartPage/>
     else if(pagename == "home") newCurrentPage = <><Topbar/><Home_Page/><NavBar/></>
@@ -129,6 +134,7 @@ function App() {
         <div className={isLoading ? "loader" : "hide"}>
           <div className="loading-effect"></div>
         </div>
+        
 
       <div className={"appwrapper " + animation}>
         

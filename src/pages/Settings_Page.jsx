@@ -5,7 +5,7 @@ export const Settings_Page = () => {
     
   return (
     <div className='main-container'>
-        <h2>Cofiguraćões</h2>
+        <h2>Cofigurações</h2>
     </div>
   )
 }
