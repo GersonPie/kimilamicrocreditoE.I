@@ -64,13 +64,13 @@ const Login = () => {
             <div className="login-sec-wrapper">
             <span className='form-text-element'>Nome do Administrador</span>
             <input value={adminName} onChange={(e)=>setAdminName(e.target.value)} type="text" name='username' className="input usename" required/>
-            {adminName}
+            
             </div>
 
             <div className="login-sec-wrapper">
             <span className='form-text-element'>Palavra-passe</span>
             <input value={password} onChange={(e)=>setPassword(e.target.value)} type="password" name='password' className="input password" required/>
-            {password}
+            
             </div>
 
             <button onClick={handleSubmit} className='btn'>Fazer Login</button>
