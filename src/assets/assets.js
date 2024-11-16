@@ -14,6 +14,7 @@ import wallet from './icons/wallet.svg'
 import dollar from './icons/dollar.svg'
 import trash from './icons/trash.svg'
 import search from './icons/search-icon.svg'
+import google_logo from './icons/google-logo.png'
 
 
 export const assets = {
@@ -32,5 +33,6 @@ export const assets = {
     dollar,
     wallet,
     trash,
-    search
+    search,
+    google_logo
 }

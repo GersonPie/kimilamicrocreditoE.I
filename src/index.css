@@ -86,7 +86,10 @@
     
   }
 }
-
+.google-logo{
+  width: max(35vw, 25px);
+  animation: start_logo_appear .5s;
+}
 .main-container{
   margin: auto;
   margin-top: 75px;

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 import { ClientsEach } from '../componets/ClientsEach'
-import { fakedata } from '../assets/fakedata'
 import { SearchBar } from '../componets/SearchBar'
 import App, { AppContext } from '../App'
 

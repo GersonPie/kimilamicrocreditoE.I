@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react'
 import { assets } from '../assets/assets'
-import usePage from '../hooks/usePage'
 import { AppContext } from '../App'
 
 
