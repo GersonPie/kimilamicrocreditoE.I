@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 import { db, auth, provider } from '../../config/firebase'
-import { signInWithPopup } from 'firebase/auth'
+import { signInWithPopup, signInWithRedirect } from 'firebase/auth'
 import { AppContext } from '../../App'
 import './Login.css'
 import { assets } from '../../assets/assets'
-import { collection, getDoc } from 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
 
 
 const Login = () => {
@@ -18,18 +18,26 @@ const Login = () => {
   
   useEffect(()=>{
     const log = async ()=>{
-      const adminsQ = await getDoc(collection(db, 'admins'))
-      const adminData = adminsQ.map((admin)=>({id: admin.ref, ...admin.data()}))
+      try{
 
-      adminData.map(admin =>{
-        console.log(admin.email, auth?.currentUser?.displayName)
-        if(admin.email === auth.currentUser.email)go_to_page("boot")
-        else alert("você não é admistrador, requisição para admistrador enviada para o sistema")
-      })
+        const adminsQ = await getDocs(collection(db, "admins"))
+        const adminData = adminsQ.docs.map((admin)=>({id: admin.ref, ...admin.data()}))
+        console.log(adminData)
+        
+        adminData.map(admin =>{
+          console.log(admin.email, auth?.currentUser?.displayName)
+          if(admin.email === auth?.currentUser?.email)go_to_page("boot")
+          else console.log("você não é admistrador, requisição para admistrador enviada para o sistema")
+        })
+      }
+      catch(err){
+        console.log(err)
+      }
       
     }
+    
     log()
-  }, [auth?.currentUser?.email])
+  }, [auth?.currentUser?.displayName])
 
   const handleSubmit = async()=>{
     
