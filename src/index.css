@@ -214,15 +214,16 @@
       align-items: center;
     }
   }
-  & .avatar{
-    width: 70px;
-    height: 100%;
-  }
+
   & .dollar-icon{
     padding: 0 5px;
   }
 }
-
+.avatar{
+  width: 70px;
+  height: 100%;
+  border-radius: 50px;
+}
 .slidein{
   animation: slide-in .2s ease-in;
 }
@@ -230,8 +231,6 @@
   animation: slide-out .4s ease-out;
 }
 .addclients{
-  
-  
   position: fixed;
   background-color: #fff;
   padding: 20px 0;
@@ -469,4 +468,7 @@
   z-index: 10;
   left: 50%;
   transform: translateX(-50%);
+}
+.users-gap{
+  height: 100px;
 }

@@ -50,6 +50,7 @@ export const ClientsPage = () => {
 
       <div className="clients-body">
         {listOfUsers}
+        <div className='users-gap'></div>
       </div>
     </div>
   )

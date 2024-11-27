@@ -82,11 +82,12 @@ function App() {
     
     if(pagename == "boot")newCurrentPage =<StartPage/>
     else if(pagename == "home") newCurrentPage = <><Topbar/><Home_Page/><NavBar/></>
+    else if(pagename == "login") newCurrentPage = <Login />
     else if(pagename == "clients") newCurrentPage = <><Topbar/><ClientsPage/><NavBar/></>
     else if(pagename == "graph") newCurrentPage = <><Topbar/><Graph_Page/><NavBar/></>
     else if(pagename == "settings") newCurrentPage = <><Topbar/><Settings_Page/><NavBar/></>
     else if(pagename == "individual-client") newCurrentPage = <><Topbar/><Individual_client_View clientID={activeClientID}/><NavBar/></>
-    else newCurrentPage = <StartPage />
+    else newCurrentPage = <StartPage/>
 
 
       setAnimation("fadeaway")
