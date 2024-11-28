@@ -5,6 +5,9 @@ export const Settings_Page = () => {
   const {go_to_page} = useContext(AppContext)
   const handleLogOut = ()=>{
     auth.signOut();
+    localStorage.clear();
+    sessionStorage.clear();
+
     go_to_page("login");
   }
     
@@ -23,6 +26,12 @@ export const Settings_Page = () => {
           <div onClick={handleLogOut} className="btn red">
             log out
           </div>
+        </div>
+
+
+        <div className="geral">
+          <h3>Cliente</h3>
+          
         </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { db, auth, provider } from '../../config/firebase'
-import { signInWithPopup, signInWithCredential } from 'firebase/auth'
+import { signInWithPopup, signInWithCredential, onAuthStateChanged } from 'firebase/auth'
 import { AppContext } from '../../App'
 import './Login.css'
 import { assets } from '../../assets/assets'
@@ -11,7 +11,6 @@ const Login = () => {
 
   const {go_to_page} = useContext(AppContext)
   
-  useEffect(()=>{
     const log = async ()=>{
       try{
 
@@ -21,8 +20,8 @@ const Login = () => {
         
         adminData.map(admin =>{
           console.log(admin.email, auth?.currentUser?.displayName)
-          if(admin.email === auth.currentUser?.email) setTimeout(()=>go_to_page("boot"), 3000)
-          else console.log("você não é admistrador, requisição para admistrador enviada para o sistema")
+          if(admin.email === auth.currentUser?.email) setTimeout(()=>go_to_page("boot"), 1000)
+          else alert("você não é admistrador, requisição para admistrador enviada para o sistema")
         })
       }
       catch(err){
@@ -30,20 +29,25 @@ const Login = () => {
       }
       
     }
-    
-    log()
-  }, [auth?.currentUser?.displayName])
+    onAuthStateChanged(auth, (user)=>{
+      if(user) log()
+    })
 
   const handleSubmit = async()=>{
-    
     try{
-    const result = await signInWithPopup(auth, provider)
-    console.log(result)
+      const result = await signInWithPopup(auth, provider)
+      if(result.user.displayName !== undefined){
+        log()
+      }
+    }
+    catch (err){
+      console.log(err)
+    }
     
-  }
-  catch(err){
-    console.log(err)
-  }
+    
+    
+  
+
   }
   
   return (
