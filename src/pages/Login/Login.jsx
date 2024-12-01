@@ -4,12 +4,13 @@ import { signInWithPopup, signInWithCredential, onAuthStateChanged } from 'fireb
 import { AppContext } from '../../App'
 import './Login.css'
 import { assets } from '../../assets/assets'
-import { collection, getDocs } from 'firebase/firestore'
+import { addDoc, collection, getDocs } from 'firebase/firestore'
 
 
 const Login = () => {
 
   const {go_to_page} = useContext(AppContext)
+  const [admin_allowed, setAdmin_allowed] = useState(false)
   
     const log = async ()=>{
       try{
@@ -19,10 +20,29 @@ const Login = () => {
         console.log(adminData)
         
         adminData.map(admin =>{
-          console.log(admin.email, auth?.currentUser?.displayName)
-          if(admin.email === auth.currentUser?.email) setTimeout(()=>go_to_page("boot"), 1000)
-          else alert("você não é admistrador, requisição para admistrador enviada para o sistema")
+
+
+          if(admin.email === auth?.currentUser?.displayName){
+            if(admin.permission){
+              setAdmin_allowed(true);
+              go_to_page("boot")
+            }
+            else {
+              console.log("o seu email está pendente")
+            }
+          }
+          
+          // console.log(admin.email, auth?.currentUser?.displayName)
+          // if(admin.email === auth.currentUser?.email && admin.permission) setTimeout(()=>go_to_page("boot"), 1000)
+          // else {
+          //   add_adm_request(auth.currentUser?.email)
+          //   alert("você não é admistrador, requisição para admistrador enviada para o sistema")
+          // }
+
         })
+        if(!admin_allowed){
+          alert("A requisićão para ser Adm foi enviada")
+        }
       }
       catch(err){
         console.log(err)
@@ -32,7 +52,13 @@ const Login = () => {
     onAuthStateChanged(auth, (user)=>{
       if(user) log()
     })
-
+  const add_adm_request = async(admemail)=>{
+    await addDoc(collection(db,"admins"),{
+      email: admemail,
+      permission: false,
+      request: "made"
+    })
+  }
   const handleSubmit = async()=>{
     try{
       const result = await signInWithPopup(auth, provider)

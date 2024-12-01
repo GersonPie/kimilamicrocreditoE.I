@@ -23,6 +23,7 @@ export const Add_Clients = (props) => {
         date: Timestamp.fromDate(new Date())
       }).then(()=>{
         setNewUser("")
+        setIsShowing(false)
       }).catch(err =>{
         console.error("error fetching data after addClient ",err)
       })
