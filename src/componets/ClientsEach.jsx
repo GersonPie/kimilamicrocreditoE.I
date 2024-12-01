@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 import { AppContext } from '../App'
-import { deleteDoc } from 'firebase/firestore'
+import { db } from '../config/firebase'
+import { deleteDoc, doc } from 'firebase/firestore'
 
 
 
 export const ClientsEach = (props) => {
-    const { go_to_page, activeClientOBJ } = useContext(AppContext)
+    const { go_to_page, activeClientOBJ, data } = useContext(AppContext)
     const [deleteUser, setDeleteUser] = useState(false)
 
     const handleClick = ()=>{
 
         if(deleteUser){
-            const answer = prompt("escreva o nome do benificiente para confirmar que deseja apagar")
+            const answer = prompt(`escreva ${props.name} para confirmar que deseja apagar`)
             if(props.name === answer){
                 delete_user(props.id);
             }
@@ -24,18 +25,37 @@ export const ClientsEach = (props) => {
         }
     }
 
-    function delete_user(id){
-        // deleteDoc
+    const delete_user=(id)=>{
+        const loans_to_delete = data.loans.filter(loan=>{
+            
+            if(loan.userId === id){
+
+                data.payments.map(pay=>{
+
+                    if(pay.loanId === loan.id)
+                        delete_file_on_DB(pay.firestoreID, "payments")
+                    })
+                    return true
+            }
+            
+        })
+        
+        loans_to_delete.map(loan=>{
+            console.log(`deleting loan id ${loan.firestoreID}`);
+            delete_file_on_DB(loan.firestoreID, 'loans')
+        })
+
+        data.users.map(user=>{
+            if(user.id === id){
+                delete_file_on_DB(user.firestoreID, 'users')
+            }
+        })
+    
+        async function delete_file_on_DB(file_id,list){
+            await deleteDoc(doc(db, list, file_id));
+        }
+
     }
-    function getRandomHexColor() {
-        // Generate a random number between 0 and 16777215 (0xFFFFFF)
-        const randomNum = Math.floor(Math.random() * 16777215);
-      
-        // Convert the number to a hexadecimal string and pad it to 6 characters
-        const hexColor = `#${randomNum.toString(16).padStart(6, "0")}`;
-      
-        return hexColor;
-      }
 
     useEffect(()=>{
         if(deleteUser)handleClick()
@@ -43,7 +63,7 @@ export const ClientsEach = (props) => {
   return (
     
     <div className="clients-each" >
-        <div onClick={handleClick} className='custom-avatar' style={{backgroundColor: getRandomHexColor()}}><h3>{props.name.slice(0,2)}</h3></div>
+        <div onClick={handleClick} className='custom-avatar'><h3>{props.name.slice(0,2)}</h3></div>
         <div className="client-wrapper">
 
         <div className="client-details" onClick={handleClick}>
