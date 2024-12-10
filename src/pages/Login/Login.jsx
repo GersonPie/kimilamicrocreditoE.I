@@ -10,39 +10,40 @@ import { addDoc, collection, getDocs } from 'firebase/firestore'
 const Login = () => {
 
   const {go_to_page} = useContext(AppContext)
-  const [admin_allowed, setAdmin_allowed] = useState(false)
+  const [admin_allowed, setAdmin_allowed] = useState(null)
+  const [is_admin_in_the_databsae, set_is_admin_in_the_databsae] = useState(null)
   
+
+  useEffect(()=>{
+    if(!admin_allowed){
+      //alert("A requisição para ser Adm foi enviada")
+      add_adm_request(auth?.currentUser?.email)
+    }
+  }, [admin_allowed])
+
+
     const log = async ()=>{
       try{
 
         const adminsQ = await getDocs(collection(db, "admins"))
         const adminData = adminsQ.docs.map((admin)=>({id: admin.ref, ...admin.data()}))
-        console.log(adminData)
         
         adminData.map(admin =>{
 
-
-          if(admin.email === auth?.currentUser?.displayName){
+          if(admin.email === auth?.currentUser?.email){
             if(admin.permission){
               setAdmin_allowed(true);
-              go_to_page("boot")
+              setTimeout(()=>go_to_page("boot"),2000)
             }
             else {
               console.log("o seu email está pendente")
             }
           }
-          
-          // console.log(admin.email, auth?.currentUser?.displayName)
-          // if(admin.email === auth.currentUser?.email && admin.permission) setTimeout(()=>go_to_page("boot"), 1000)
-          // else {
-          //   add_adm_request(auth.currentUser?.email)
-          //   alert("você não é admistrador, requisição para admistrador enviada para o sistema")
-          // }
+          else{
+            setAdmin_allowed(false)
+          }
 
         })
-        if(!admin_allowed){
-          alert("A requisićão para ser Adm foi enviada")
-        }
       }
       catch(err){
         console.log(err)
@@ -50,21 +51,28 @@ const Login = () => {
       
     }
     onAuthStateChanged(auth, (user)=>{
-      if(user) log()
+      if(user && auth.authStateReady) log()
     })
   const add_adm_request = async(admemail)=>{
-    await addDoc(collection(db,"admins"),{
-      email: admemail,
-      permission: false,
-      request: "made"
+    const adminQ = await getDocs(collection(db, "admins"))
+    const adminData = adminQ.docs.map((d)=>({
+      id: d.ref,
+      ...d.data()
+    }));
+
+    adminData.map((admin)=>{
+      if(admin.email === auth?.currentUser?.email){
+        //alert("O seu email ja foi adicionado a espera")
+      }
+      else{
+        
+      }
     })
+    
   }
   const handleSubmit = async()=>{
     try{
-      const result = await signInWithPopup(auth, provider)
-      if(result.user.displayName !== undefined){
-        log()
-      }
+      await signInWithPopup(auth, provider)
     }
     catch (err){
       console.log(err)

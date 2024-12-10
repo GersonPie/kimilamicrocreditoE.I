@@ -508,3 +508,8 @@
 .users-gap{
   height: 100px;
 }
+.clients-separador{
+  display: flex;
+  justify-content:space-between;
+  padding:10px
+}

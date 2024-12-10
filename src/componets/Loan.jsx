@@ -75,7 +75,7 @@ const [newLoanValue, setNewLoanValue] = useState(false)
               </div>
 
               <div className='separator'>
-                <h4>Por Pagar</h4>
+                <h4>Por Pagar até <br />{loan.deadline.toDate().toLocaleDateString()}</h4>
                 <span>{(Number(loan.amount) + Number(loan.amount)*0.3) - totalPaid}MZN</span>
               </div>
             </div>
