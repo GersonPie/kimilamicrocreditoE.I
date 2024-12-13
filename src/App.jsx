@@ -16,7 +16,7 @@ import { onSnapshot } from "firebase/firestore";
 export const AppContext = createContext();
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(<StartPage />);
+  const [currentPage, setCurrentPage] = useState(<Login />);
   const [animation, setAnimation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [is_add_clients_tab_active, activeClientsTab] = useState(false);

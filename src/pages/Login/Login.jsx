@@ -64,9 +64,6 @@ const Login = () => {
       if(admin.email === auth?.currentUser?.email){
         //alert("O seu email ja foi adicionado a espera")
       }
-      else{
-        
-      }
     })
     
   }
