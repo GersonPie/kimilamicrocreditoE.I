@@ -23,12 +23,25 @@ function App() {
   const [addClientsAnimation, setAddClientsAnimation] = useState("");
   const [activeClientID, setActiveClientID] = useState("");
   const [users, setUsers] = useState([]);
+  const [admins, setAdmins] = useState([]);
   const [loans, setLoans] = useState([]);
   const [payments, setPayments] = useState([]);
   
 
   
 // fetches and watches the data changes in the database
+useEffect(() => {
+  const unsubscribeAdmins = onSnapshot(collection(db, "admins"), (snapshot) => {
+
+    var admins_proto = snapshot.docs.map(doc => ({ firestoreID: doc.id, ...doc.data() }))
+
+    
+    setAdmins(admins_proto.sort((a, b) => a.id - b.id));
+  });
+
+  return () => unsubscribeAdmins();
+}, [db]);
+
   useEffect(() => {
     const unsubscribeUsers = onSnapshot(collection(db, "users"), (snapshot) => {
 
@@ -113,7 +126,8 @@ function App() {
   const data={
     users, 
     loans, 
-    payments
+    payments,
+    admins
   }
   
   const activeClientOBJ = {
