@@ -15,9 +15,9 @@ export const Add_Clients = (props) => {
   }
 
   const handleSubmit = async () => {
-    if(newUser.length >=3){
+    if(newUser.trim().length >=3){
       await addDoc(collection(db, "users"),{
-        name:newUser ,
+        name:newUser.trim(),
         id: new Date().getTime(),
         type: "user",
         date: Timestamp.fromDate(new Date())
