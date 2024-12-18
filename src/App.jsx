@@ -26,6 +26,8 @@ function App() {
   const [admins, setAdmins] = useState([]);
   const [loans, setLoans] = useState([]);
   const [payments, setPayments] = useState([]);
+  const [_BAG_FULLA_SHIT, setBag] = useState([]);
+
   
 
   
@@ -52,6 +54,18 @@ useEffect(() => {
     });
 
     return () => unsubscribeUsers();
+  }, [db]);
+
+  useEffect(() => {
+    const unsubscribeConfigs = onSnapshot(collection(db, "Config"), (snapshot) => {
+
+      var _BAG_FULLA_SHIT_proto = snapshot.docs.map(doc => ({ firestoreID: doc.id, ...doc.data() }))
+
+      
+      setBag(_BAG_FULLA_SHIT_proto.sort((a, b) => a.id - b.id));
+    });
+
+    return () => unsubscribeConfigs();
   }, [db]);
 //////////////////////////////////////////////////////
 
@@ -127,7 +141,8 @@ useEffect(() => {
     users, 
     loans, 
     payments,
-    admins
+    admins,
+    _BAG_FULLA_SHIT
   }
   
   const activeClientOBJ = {
