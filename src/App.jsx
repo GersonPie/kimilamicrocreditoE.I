@@ -26,6 +26,8 @@ function App() {
   const [admins, setAdmins] = useState([]);
   const [loans, setLoans] = useState([]);
   const [payments, setPayments] = useState([]);
+  const [ searchInput, setSearchInput ] = useState('');
+  const [searchResults, setResults ] = useState([]);
   const [_BAG_FULLA_SHIT, setBag] = useState([]);
 
   
@@ -142,7 +144,11 @@ useEffect(() => {
     loans, 
     payments,
     admins,
-    _BAG_FULLA_SHIT
+    _BAG_FULLA_SHIT,
+    searchResults,
+    setResults,
+    setSearchInput,
+    searchInput
   }
   
   const activeClientOBJ = {

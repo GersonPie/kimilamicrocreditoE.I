@@ -9,12 +9,13 @@ import App, { AppContext } from '../App'
 export const ClientsPage = () => {
   const [listOfUsers, setListOfUsers] = useState(null)
   const {data} = useContext(AppContext);
+  
 
-  const {users, loans} = data;
-
-
+  const {loans, searchInput, setSearchInput, searchResults, setResults} = data;
+  const users = searchResults;
   
   useEffect(()=>{
+    
     let __USER_PROTO = [];
     let activeLoan = {};
     users.map(user =>{
@@ -39,6 +40,10 @@ export const ClientsPage = () => {
     })
     setListOfUsers(__USER_PROTO);
   },[users])
+
+  useEffect(()=>{
+    setResults(data.users);
+  }, [])
   return (
     <div className="main-container clients">
 
