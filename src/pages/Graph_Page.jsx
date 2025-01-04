@@ -3,7 +3,7 @@ import { AppContext } from '../App'
 import {doc, Timestamp, updateDoc} from 'firebase/firestore'
 import { db, collection, auth } from '../config/firebase'
 export const Graph_Page = () => {
-  const {data} = useContext(AppContext)
+  const {data, go_to_page} = useContext(AppContext)
   const [V_em_circulação, setv_em_circulação] = useState(0)
   const [AppFee, setAppFee] = useState(0)
   const {users,loans,payments, _BAG_FULLA_SHIT} = data;
@@ -76,6 +76,10 @@ export const Graph_Page = () => {
           </div>
 
           </div>
+        </div>
+
+        <div className="print-repport" onClick={()=>go_to_page("repport")}>
+          Baixar Relatorio
         </div>
     </div>
   )

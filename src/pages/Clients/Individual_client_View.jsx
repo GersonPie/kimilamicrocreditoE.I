@@ -88,7 +88,7 @@ export const Individual_client_View = () => {
         <img src={assets.avatar} alt="" />
 
         <div className="profile-details">
-          <h3>{activeUser.name}</h3>
+          <p>{activeUser.name}</p>
           <div className="profile-details-wrapper">
           <img src={assets.wallet} className='icon'  alt="" />
           <span>{activeLoan?.amount || 0}MZN</span>

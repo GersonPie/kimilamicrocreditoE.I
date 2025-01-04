@@ -95,9 +95,9 @@
   justify-content: center;
   border-radius: 50%;
 & h3{
-  display: flex;
-  width: 60px;
-  height: 60px;
+  display: none;
+  width: 40px;
+  height: 40px;
   align-items: center;
   color: white;
   
@@ -185,7 +185,7 @@
   gap: 10px;
 }
 .profile img{
-  width: 100px;
+  width: 50px;
   
   border-radius: 50%;
   
@@ -217,18 +217,23 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  
   & .remove-user{
     
     align-self: center;
     justify-self: end;
+    padding-right: 10px;
   }
 }
 .clients-each{
   display: flex;
   gap: 10px;
   align-items: center;
-  border-bottom: 1px solid #00000028;
-  width: 100%;
+  border-radius: 20px;
+  box-shadow: #00000028 1px 1px 10px;
+  width: 98%;
+  margin: auto;
+  padding: 5px 0;
 
   & .client-details{
     display: flex;

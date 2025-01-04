@@ -11,6 +11,7 @@ import { Individual_client_View } from "./pages/Clients/Individual_client_View";
 import Login from './pages/Login/Login'
 import { db, collection } from './config/firebase';
 import { onSnapshot } from "firebase/firestore";
+import Repport from "./componets/repport/repport";
 
 
 export const AppContext = createContext();
@@ -116,6 +117,7 @@ useEffect(() => {
     else if(pagename == "graph") newCurrentPage = <><Topbar/><Graph_Page/><NavBar/></>
     else if(pagename == "settings") newCurrentPage = <><Topbar/><Settings_Page/><NavBar/></>
     else if(pagename == "individual-client") newCurrentPage = <><Topbar/><Individual_client_View clientID={activeClientID}/><NavBar/></>
+    else if(pagename == "repport") newCurrentPage = <Repport/>
     else newCurrentPage = <StartPage/>
 
 

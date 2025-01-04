@@ -7,6 +7,10 @@ Kimila microcredito E.I app, is a client manager app that keeps track of a few t
 
 
 Requirements:
-
+    Create a new project in firebase official website: https://console.firebase.google.com
+    > nodejs
+    > git
 to run:
+    $ npm install
+    $ npm run dev
 >>>>>>> b35152a (add: Homepage)

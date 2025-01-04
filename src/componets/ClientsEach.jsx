@@ -67,7 +67,7 @@ export const ClientsEach = (props) => {
         <div className="client-wrapper">
 
         <div className="client-details" onClick={handleClick}>
-            <h3>{props.name}</h3>
+            <p>{props.name}</p>
             <div className="client-details-values">
                 <div className="client-details-loan-amount">
                     <img src={assets.wallet} alt="wallet" className='dollar-icon'/>
