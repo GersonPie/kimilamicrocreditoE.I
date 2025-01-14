@@ -35,7 +35,7 @@ export const ClientsEach = (props) => {
                     if(pay.loanId === loan.id)
                         delete_file_on_DB(pay.firestoreID, "payments")
                     })
-                    return true
+                    return true;
             }
             
         })

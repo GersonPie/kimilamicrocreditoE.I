@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
-import App, { AppContext } from '../App';
+import { AppContext } from '../App';
 export const SearchBar = () => {
   const {data} = useContext(AppContext)
   const { users,searchInput, setSearchInput, searchResults, setResults} = data;
@@ -21,7 +21,7 @@ export const SearchBar = () => {
     }
     
 
-  }, [searchInput])
+  }, [searchInput, users])
 
   useEffect(()=>{
     searchResults.map((result)=>{

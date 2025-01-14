@@ -13,7 +13,7 @@ import { db, collection } from './config/firebase';
 import { onSnapshot } from "firebase/firestore";
 import Repport from "./componets/repport/repport";
 
-
+//create the app context
 export const AppContext = createContext();
 
 function App() {
