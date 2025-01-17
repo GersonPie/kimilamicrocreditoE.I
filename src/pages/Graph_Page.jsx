@@ -10,9 +10,9 @@ export const Graph_Page = () => {
   
   useEffect(()=>{
     console.log(_BAG_FULLA_SHIT)
-    _BAG_FULLA_SHIT.map((bag)=>{
-      if(bag.fee !== undefined){
-        setAppFee(bag.fee)
+    _BAG_FULLA_SHIT.map((shit)=>{
+      if(shit.fee !== undefined){
+        setAppFee(shit.fee)
       }
     }, [_BAG_FULLA_SHIT])
 
@@ -70,10 +70,10 @@ export const Graph_Page = () => {
           <div className="clients-separador">
 
           <p>Juros</p>
-          <div>
-            <input type="number" min={0} max={50} onChange={(e)=>setAppFee(e.target.value)} value={AppFee} />
+          <form onSubmit={(e)=> e.preventDefault()}>
+            <input type="number" min={0} max={50} onChange={(e)=>setAppFee(e.target.value/100)} value={AppFee*100} />
             <button onClick={handleFeeButton}>OK</button>
-          </div>
+          </form>
 
           </div>
         </div>

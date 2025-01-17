@@ -9,6 +9,18 @@ import { deleteDoc, doc } from 'firebase/firestore'
 export const ClientsEach = (props) => {
     const { go_to_page, activeClientOBJ, data } = useContext(AppContext)
     const [deleteUser, setDeleteUser] = useState(false)
+    const [ AppFee, setAppFee] = useState(0)
+    const {_BAG_FULLA_SHIT, setBag} = data;
+
+    useEffect(()=>{
+        _BAG_FULLA_SHIT.map((shit)=>{
+            if(shit.fee !== undefined){
+                setAppFee(shit.fee)
+              }
+        })
+    }, [_BAG_FULLA_SHIT])
+    
+    
 
     const handleClick = ()=>{
 
@@ -76,12 +88,12 @@ export const ClientsEach = (props) => {
                 <div className="separator">|</div>
                 <div className="client-details-loan-amount">
                     <img src={assets.dollar} alt="wallet" className='dollar-icon' />
-                    {props.loanAmmount * 0.3}MZN
+                    {props.loanAmmount * AppFee}MZN
                 </div>
                 <div className="loan-state-dot"></div>
             </div>
         </div>
-        <div className="remove-user" onClick={()=> {setDeleteUser(true);}}>
+        <div className="remove-user" onClick={()=> {setDeleteUser(true)}}>
             <img className='icon ' src={assets.trash} alt=""/>
         </div>
         </div>

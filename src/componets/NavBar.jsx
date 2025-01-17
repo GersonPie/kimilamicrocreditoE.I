@@ -40,9 +40,11 @@ export const NavBar = () => {
         </div>
 
         <div className="navbar-each-icon-wrapper">
-            <img src={assets.icon_settings} onClick={()=>{
+            <img src={assets.icon_settings} onClick={
+                ()=>{
                 go_to_page("settings")
-            }} alt="" />
+            }
+            } alt="" />
         </div>
     </div>
   )

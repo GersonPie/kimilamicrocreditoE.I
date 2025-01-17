@@ -33,7 +33,7 @@ const Repport = () => {
         <h2>Departamento de Supervisão Prudencial</h2>
         <p>Reporte Periódico de Informação de Micro Finanças</p>
         <p>Instituições Sujeitas à Monitorização (Operadores de Microcrédito)</p>
-        <p><strong>Período de Reporte:</strong> 01/02/2024 a 30/06/2024</p>
+        <p><strong>Período de Reporte:</strong> 01/02/{new Date().getFullYear()} a 30/06/{new Date().getFullYear()}</p>
     </header>
 
     <section id="identificacao">
@@ -61,8 +61,8 @@ const Repport = () => {
             <thead>
                 <tr>
                     <th>Descrição</th>
-                    <th>I Semestre 2024</th>
-                    <th>II Semestre 2024</th>
+                    <th>I Semestre {new Date().getFullYear()}</th>
+                    <th>II Semestre {new Date().getFullYear()}</th>
                 </tr>
             </thead>
             <tbody>

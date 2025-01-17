@@ -19,8 +19,19 @@ export const Individual_client_View = () => {
   const [ showYes, setShowYes] = useState(false)
   const [newLoanAmount, setNewLoanAmount] = useState(0)
   const [isShowing, setIsShowing] = useState(false)
-  
+  const [appFee, setFee] = useState(0);
+  const {_BAG_FULLA_SHIT} = data;
 
+
+  useEffect(
+    ()=>{
+      _BAG_FULLA_SHIT.map(shit =>{
+        shit.fee && setFee(shit.fee);
+      })
+
+    }
+    ,[_BAG_FULLA_SHIT]
+  )
   async function updateLoanStatus(customLoanId) {
     try {
       const q = query(collection(db, "loans"), where("id", "==", customLoanId));
@@ -93,7 +104,7 @@ export const Individual_client_View = () => {
           <img src={assets.wallet} className='icon'  alt="" />
           <span>{activeLoan?.amount || 0}MZN</span>
           <img src={assets.dollar} className='icon'  alt="" />
-          <span>{(activeLoan?.amount || 0) * 0.3}MZN</span>
+          <span>{(activeLoan?.amount || 0) * appFee}MZN</span>
           </div>
         </div>
       </div>

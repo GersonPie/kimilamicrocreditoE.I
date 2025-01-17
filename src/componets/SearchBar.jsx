@@ -30,7 +30,7 @@ export const SearchBar = () => {
   }, [searchResults])
   return (
     <div className="search-bar-div">
-        <input type="search" onChangeCapture={(e)=>setSearchInput(e.target.value)} value={searchInput} name="search" id="search-bar-input" />
+        <input type="search" onChange={(e)=>setSearchInput(e.target.value)} value={searchInput} name="search" id="search-bar-input" />
         <img src={assets.search} id="search-bar-icon" alt="" />
       </div>
   )
