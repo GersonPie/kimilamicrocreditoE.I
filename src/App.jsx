@@ -17,7 +17,7 @@ import Repport from "./componets/repport/repport";
 export const AppContext = createContext();
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(<Login />);
+  const [currentPage, setCurrentPage] = useState(<Graph_Page />);
   const [animation, setAnimation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [is_add_clients_tab_active, activeClientsTab] = useState(false);

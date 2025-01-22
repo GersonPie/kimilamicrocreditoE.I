@@ -1,31 +1,34 @@
 import React, { useRef } from 'react'
-import html2canvas from 'html2canvas'
-import jsPdf from 'jspdf'
+import html2pdf from 'html2pdf.js'
+import jsPdf, { jsPDF } from 'jspdf'
+
 import './repport.css'
 const Repport = () => {
   const printRef = useRef(null)
 
 
   const handleDownload= async()=>{
-    if(!printRef)return;
+    const repport = document.querySelector('#repport')
+    html2pdf(repport)
+    // if(!printRef)return;
 
-    const canvas = await html2canvas(printRef.current)
-    const data = canvas.toDataURL();
-    const doc = new jsPdf({
-        orientation: 'portrait',
-        unit: 'px',
-        format: "A4",
+    // const canvas = await html2canvas(printRef.current)
+    // const data = canvas.toDataURL();
+    // const doc = new jsPdf({
+    //     orientation: 'portrait',
+    //     unit: 'px',
+    //     format: "A4",
         
-    })
+    // })
 
-    doc.addImage(data, "PNG", 0,0,703/2, 1144/2)
-    doc.save(`relatorio-kimilamicrocredito-${new Date().getTime()}.pdf`)
+    // doc.addImage(data, "PNG", 0,0,703/2, 1144/2)
+    // doc.save(`relatorio-kimilamicrocredito-${new Date().getTime()}.pdf`)
   }
 
   return (
     <>
     <button onClick={handleDownload}>baixar relatorio</button>
-    <div className='repport' ref={printRef}>
+    <div id='repport' className='repport' ref={printRef}>
       
 
       <header>
