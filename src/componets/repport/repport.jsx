@@ -10,19 +10,7 @@ const Repport = () => {
   const handleDownload= async()=>{
     const repport = document.querySelector('#repport')
     html2pdf(repport)
-    // if(!printRef)return;
-
-    // const canvas = await html2canvas(printRef.current)
-    // const data = canvas.toDataURL();
-    // const doc = new jsPdf({
-    //     orientation: 'portrait',
-    //     unit: 'px',
-    //     format: "A4",
-        
-    // })
-
-    // doc.addImage(data, "PNG", 0,0,703/2, 1144/2)
-    // doc.save(`relatorio-kimilamicrocredito-${new Date().getTime()}.pdf`)
+   
   }
 
   return (
