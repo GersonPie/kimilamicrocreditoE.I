@@ -37,9 +37,10 @@ const IndividualRecentPost=(props)=>{
     return (
         <div className="recent-person" onClick={handleClick}>
                 <div className="profile">
-                    <img src={props.profile} alt="profile picture" />
+                    {props.name.slice(0,1)}
                 </div>
-                <p>{props.name}</p>
+                <br />
+                <p>{props.name.slice(0, 9)} {props.name.length > 9 ? "...": ""}</p>
             </div>
     )
 }

@@ -10,7 +10,9 @@ export const ClientsEach = (props) => {
     const { go_to_page, activeClientOBJ, data } = useContext(AppContext)
     const [deleteUser, setDeleteUser] = useState(false)
     const [ AppFee, setAppFee] = useState(0)
-    const {_BAG_FULLA_SHIT, setBag} = data;
+    const {_BAG_FULLA_SHIT, setBag, loans} = data;
+    const hoje = new Date();
+
 
     useEffect(()=>{
         _BAG_FULLA_SHIT.map((shit)=>{
@@ -27,6 +29,12 @@ export const ClientsEach = (props) => {
         if(deleteUser){
             const answer = prompt(`escreva ${props.name} para confirmar que deseja apagar`)
             if(props.name === answer){
+                loans.map(loan=>{
+                    if(props.id == loan.userId && loan.active){
+                        alert('este usuario tem Saldo em actividade');
+                        return;
+                    }
+                })
                 delete_user(props.id);
             }
             setDeleteUser(false)
@@ -79,8 +87,23 @@ export const ClientsEach = (props) => {
         <div className="client-wrapper">
 
         <div className="client-details" onClick={handleClick}>
-            <p>{props.name}</p>
+            {hoje <= props.deadline ? <p className='expired'>{props.name}</p>:<p className=''>{props.name}</p>}
             <div className="client-details-values">
+            {
+                    props.loanAmmount  ? <> 
+                     {hoje <= props.deadline ?
+                     <>
+                     <div className='calendar icon'><img src={assets.calendar} alt="" /></div>
+                     <span className='expired'>{props.deadline?.toDate().getMonth()}</span>
+                     </>
+ 
+                     : 
+                     <>
+                     <div className='calendar icon'><img src={assets.calendar} alt="" /></div>
+                     <span className=''>{Math.ceil((props.deadline?.toDate() - hoje) / (1000 * 60 * 60 * 24))}</span>
+                     </>}
+                     </>: ""
+                 }
                 <div className="client-details-loan-amount">
                     <img src={assets.wallet} alt="wallet" className='dollar-icon'/>
                     {props.loanAmmount}.00MZN
@@ -90,7 +113,7 @@ export const ClientsEach = (props) => {
                     <img src={assets.dollar} alt="wallet" className='dollar-icon' />
                     {props.loanAmmount * AppFee}MZN
                 </div>
-                <div className="loan-state-dot"></div>
+                
             </div>
         </div>
         <div className="remove-user" onClick={()=> {setDeleteUser(true)}}>

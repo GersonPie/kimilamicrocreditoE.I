@@ -61,7 +61,7 @@ export const Individual_client_View = () => {
     updateLoanStatus(activeLoan?.id || 0)
     await addDoc(collection(db, "loans"), {
       active: true,
-      amount: newLoanAmount,
+      amount: Number(newLoanAmount),
       date: Timestamp.fromDate(new Date()),
       deadline: getFollowingMonthFirstDay(),
       id: new Date().getTime(),
@@ -109,6 +109,9 @@ export const Individual_client_View = () => {
         </div>
       </div>
       
+
+      
+
       <div className="loan-list">
         <div className="loans-list-header">
         <h3>ID</h3>
@@ -143,7 +146,7 @@ export const Individual_client_View = () => {
         }} className="newLoanBTN">
         Adicionar Emprestimo
       </div>
-      {showYes && <YesNoPrompt min={500} max={25000} value={newLoanAmount} msg={`Deseja criar novo emprestimo para \n ${activeUser.name}`} setShowYes={setShowYes} action={createNewLoan} setValue={setNewLoanAmount} />}
+      {showYes && <YesNoPrompt min={500} max={25000} value={Number(newLoanAmount)} msg={`Deseja criar novo emprestimo para \n ${activeUser.name}`} setShowYes={setShowYes} action={createNewLoan} setValue={setNewLoanAmount} />}
     </div>
     {isShowing &&<WarnUser message={"Pague o emprestimo actual antes de iniciar outro"} setIsShowing={setIsShowing} time={12000}/>}
     </>

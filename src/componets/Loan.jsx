@@ -27,7 +27,7 @@ const {_BAG_FULLA_SHIT, setBag} = data;
   const handleAddPayment = async () =>{
 
     await addDoc(collection(db, "payments"), {
-      amount: newLoanValue,
+      amount: Number(newLoanValue),
       date: Timestamp.fromDate(new Date()),
       id: new Date().getTime(),
       loanId: loan.id

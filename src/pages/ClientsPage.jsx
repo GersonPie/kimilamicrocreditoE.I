@@ -28,7 +28,7 @@ export const ClientsPage = () => {
     user_loans.map(loan=>{
       if(loan.active){
         activeLoan = loan;
-        __USER_PROTO.push(<ClientsEach firestoreID={user.firestoreID} key={user.id} id={user.id} loanAmmount={loan.amount} name={user.name} avatar={assets.avatar}/>)
+        __USER_PROTO.push(<ClientsEach firestoreID={user.firestoreID} key={user.id} id={user.id} deadline={loan.deadline} loanAmmount={loan.amount} name={user.name} avatar={assets.avatar}/>)
       }
     })
     

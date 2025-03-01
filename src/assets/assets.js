@@ -15,7 +15,7 @@ import dollar from './icons/dollar.svg'
 import trash from './icons/trash.svg'
 import search from './icons/search-icon.svg'
 import google_logo from './icons/google-logo.png'
-
+import calendar from './icons/calendar.svg'
 
 export const assets = {
     logo_start,
@@ -25,6 +25,7 @@ export const assets = {
     icon_settings,
     icon_meter,
     icon_graph,
+    calendar,
     icon_bottom_bar,
     money_img,
     icon_graph2,
