@@ -11,13 +11,13 @@ import { GoogleAuthProvider, getAuth} from 'firebase/auth'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBnC3m4nJZEuSj5HBg1et5yIY9NKfANGNk",
-  authDomain: "kimilamicrocredito-firebase.firebaseapp.com",
-  projectId: "kimilamicrocredito-firebase",
-  storageBucket: "kimilamicrocredito-firebase.firebasestorage.app",
-  messagingSenderId: "86381785446",
-  appId: "1:86381785446:web:3c0864506f239d302bd8a7",
-  measurementId: "G-CVK5MSMC9B"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: ""
 };
 
 // Initialize Firebase
